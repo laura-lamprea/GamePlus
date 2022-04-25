@@ -12,6 +12,9 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    backgroundImage: {
+      type: DataTypes.STRING
     }
     }, {
     timestamps: false

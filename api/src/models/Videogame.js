@@ -17,12 +17,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    releaseDate: {
+    released: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.DECIMAL,
       allowNull: true,
     },
     platforms: {
