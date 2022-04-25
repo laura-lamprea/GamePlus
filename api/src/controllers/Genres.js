@@ -1,24 +1,24 @@
 const axios = require('axios');
 require('dotenv').config();
 const { KEY } = process.env;
-const { Gender } = require('../db')
+const { Genre } = require('../db')
 
-const getAllGender = async (req, res) => {
+const getAllGenres = async (req, res) => {
     try {
         const dataApi = await axios.get(`https://api.rawg.io/api/genres?key=${KEY}`);
         // const genderArr = await dataApi.data.results.map(p => p.name)
-        const genderArr = await dataApi.data.results.map(p => [p.name, p.image_background])
+        const genrerArr = await dataApi.data.results.map(p => p.name) //[p.name, p.image_background])
         //console.log(genderArr)
-        genderArr.forEach(gender => {
-            Gender.findOrCreate({
+        genrerArr.forEach(genre => {
+            Genre.findOrCreate({
                 where: { 
-                    name: gender[0],
-                    backgroundImage: gender[1]
+                    name: genre
+                    // backgroundImage: genre[1]
                  }
             })
         })
-        const allGender = await Gender.findAll();
-        return res.json(allGender);
+        const allGenres = await Genre.findAll();
+        return res.json(allGenres);
     } catch (error) {
         //console.error(e);
         return res.status(404).send('Not found Types');
@@ -26,5 +26,5 @@ const getAllGender = async (req, res) => {
 };
 
 module.exports = {
-    getAllGender
+    getAllGenres
 }

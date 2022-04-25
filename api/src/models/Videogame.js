@@ -13,8 +13,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    image:{
       type: DataTypes.STRING,
+      defaultValue:"https://as01.epimg.net/meristation/imagenes/2020/09/17/cover/819398581600341232.jpg"
+    },
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     released: {
@@ -26,8 +30,12 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     platforms: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
+    },
+    created_db: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
     }, {
     timestamps: false

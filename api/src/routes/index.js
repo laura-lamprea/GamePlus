@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const Videogame = require('./Videogame')
-const Gender = require('./Gender')
+const Genres = require('./Genres')
 
 const router = Router();
 
 router.use('/videogames', Videogame)
-router.use('/genres', Gender)
+router.use('/genres', Genres)
 
 module.exports = router;

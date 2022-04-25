@@ -1,12 +1,12 @@
 const { Router } = require('express');
-const { getAllGames, getById } = require('../controllers/Videogame.js')
+const { getAllGames, getById, createGame } = require('../controllers/Videogame.js')
 
 
 const router = Router();
 
 router.get('/', getAllGames)
 router.get('/:id', getById)
-// router.post('/', createPoke) 
+router.post('/', createGame) 
 // router.delete('/:id', deletePoke)
 
 

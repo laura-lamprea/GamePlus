@@ -1,12 +1,7 @@
 const axios = require("axios");
 require('dotenv').config();
-const {
-    KEY
-} = process.env;
-const {
-    Videogame,
-    Gender
-} = require("../db");
+const { KEY } = process.env;
+const { Videogame, Genre } = require("../db");
 
 
 // 3328      The Witcher 3: Wild Hunt
@@ -33,6 +28,19 @@ const apiGames = async (req, res) => {
     }
 };
 
+// const db = async (req, res) => {
+//   const pokeDb = await Pokemon.findAll({
+//     include: {
+//       model: Type,
+//       attributes: ["name"],
+//       through: {
+//         attribute: [],
+//       },
+//     },
+//   });
+//   return pokeDb;
+// };
+
 const getAllGames = async (req, res) => {
   const { page, name } = req.query;
   //const dataDb = await db();
@@ -42,18 +50,16 @@ const getAllGames = async (req, res) => {
     console.log(name.toLowerCase())
     // const gameByName = await dataApi.find(n => n.name.toLowerCase() == name.toLowerCase()); 
     const gameByName = await dataApi.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); //filter porque find solo uno //== name.toLowerCase());
-
-    //encodeURI(gameByName);
-    console.log('Lo encontro!',gameByName)
-    //return res.json(gameByName)
+    if(!gameByName.length){
+        return res.status(400).send('Not found')
+    }else{
+        return res.json(gameByName)
+    }
   }
   if (page) {
     if (page == 1) {
       const pages = allGames.slice(page - 1, page * 15);
       return res.json(pages);
-
-      // The Witcher 3: Wild Hunt
-      // The %20 Witcher%203:%20Wild%20Hunt
     } else {
       const pages = allGames.slice((page - 1) * 15, page * 15);
       return res.json(pages);
@@ -147,39 +153,17 @@ const getById = async (req, res) => {
 
 
 
-// const createPoke = async (req, res) => {
-//   const {
-//     name,
-//     imgT,
-//     lifeTime,
-//     force,
-//     defending,
-//     speed,
-//     height,
-//     weight,
-//     type,
-//   } = req.body;
-//   const newPokemon = await Pokemon.create({
-//     name,
-//     imgT,
-//     lifeTime,
-//     force,
-//     defending,
-//     speed,
-//     height,
-//     weight,
-//   });
-//   const typeDb = await Type.findAll({
-//     where: {
-//       name: type,
-//     },
-//   });
-//   newPokemon.addType(typeDb);
-//   // res.send('Successful create')
-//   res.json({
-//     data: newPokemon,
-//   });
-// };
+const createGame = async (req, res) => {
+  const {name, image, description, released, rating, platforms, genres} = req.body;
+  const newGame = await Videogame.create({name, image, description, released, rating, platforms});
+  const genderDb = await Genre.findAll({
+    where: {
+      name: genres,
+    },
+  });
+  newGame.addGenre(genderDb);
+  res.json({data: newGame, msg:'Successful create'});
+};
 
 
 
@@ -202,5 +186,6 @@ const getById = async (req, res) => {
 
 module.exports = {
     getAllGames,
-    getById
+    getById,
+    createGame
 };
