@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('genre', {
-    id: {  
+    idG: {  
       type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
@@ -13,9 +13,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // backgroundImage: {
-    //   type: DataTypes.STRING
-    // }
     }, {
     timestamps: false
   });

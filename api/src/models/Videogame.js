@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     rating: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     platforms: {

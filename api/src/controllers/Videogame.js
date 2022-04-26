@@ -28,28 +28,28 @@ const apiGames = async (req, res) => {
     }
 };
 
-// const db = async (req, res) => {
-//   const pokeDb = await Pokemon.findAll({
-//     include: {
-//       model: Type,
-//       attributes: ["name"],
-//       through: {
-//         attribute: [],
-//       },
-//     },
-//   });
-//   return pokeDb;
-// };
+const dbGames = async () => {
+  const gamesDb = await Videogame.findAll({
+    include: {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attribute: [],
+      },
+    },
+  });
+  return gamesDb;
+};
 
 const getAllGames = async (req, res) => {
   const { page, name } = req.query;
-  //const dataDb = await db();
+  const dataDb = await dbGames();
+  console.log(dataDb)
   const dataApi = await apiGames();
-  const allGames = dataApi//  [...dataDb, ...dataApi];
+  const allGames =  [...dataDb, ...dataApi]; // dataApi
   if (name) {
-    console.log(name.toLowerCase())
-    // const gameByName = await dataApi.find(n => n.name.toLowerCase() == name.toLowerCase()); 
-    const gameByName = await dataApi.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); //filter porque find solo uno //== name.toLowerCase());
+    //console.log(name.toLowerCase())
+    const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); //filter porque find solo uno //== name.toLowerCase());
     if(!gameByName.length){
         return res.status(400).send('Not found')
     }else{
@@ -65,10 +65,8 @@ const getAllGames = async (req, res) => {
       return res.json(pages);
     }
   }
-
    //return res.status(200).send(dataApi);
 };
-
 
 const getById = async (req, res) => {
     const { id } = req.params;
@@ -91,6 +89,22 @@ const getById = async (req, res) => {
     }
 };
 
+const createGame = async (req, res) => {
+  const {name, image, description, released, rating, platforms, genres} = req.body;
+  const newGame = await Videogame.create({name, image, description, released, rating, platforms});
+
+  // console.log('newGame', newGame)
+  const genderDb = await Genre.findAll({where: {name: genres}});
+
+  console.log('genderDb', genderDb)
+
+  newGame.addGenre(genderDb);
+
+  res.json({data: newGame, msg:'Successful create'});
+};
+
+
+
 // const dd = async (req, res) => {
 //   const { id } = req.params;
 //   //const dataDb = await db();
@@ -107,18 +121,7 @@ const getById = async (req, res) => {
 // };
 
 
-// const db = async (req, res) => {
-//   const pokeDb = await Pokemon.findAll({
-//     include: {
-//       model: Type,
-//       attributes: ["name"],
-//       through: {
-//         attribute: [],
-//       },
-//     },
-//   });
-//   return pokeDb;
-// };
+
 
 // const getAllPokemon = async (req, res) => {
 //   const { page, name } = req.query;
@@ -149,23 +152,6 @@ const getById = async (req, res) => {
 //   // console.log('del GETALL', allPoke);
 //   // return allPoke;
 // };
-
-
-
-
-const createGame = async (req, res) => {
-  const {name, image, description, released, rating, platforms, genres} = req.body;
-  const newGame = await Videogame.create({name, image, description, released, rating, platforms});
-  const genderDb = await Genre.findAll({
-    where: {
-      name: genres,
-    },
-  });
-  newGame.addGenre(genderDb);
-  res.json({data: newGame, msg:'Successful create'});
-};
-
-
 
 // const deletePoke = async (req, res) => {
 //   const { id } = req.params;

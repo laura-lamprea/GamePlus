@@ -6,15 +6,13 @@ const { Genre } = require('../db')
 const getAllGenres = async (req, res) => {
     try {
         const dataApi = await axios.get(`https://api.rawg.io/api/genres?key=${KEY}`);
-        // const genderArr = await dataApi.data.results.map(p => p.name)
         const genrerArr = await dataApi.data.results.map(p => p.name) //[p.name, p.image_background])
         //console.log(genderArr)
-        genrerArr.forEach(genre => {
+        genrerArr.forEach(g => {
             Genre.findOrCreate({
                 where: { 
-                    name: genre
-                    // backgroundImage: genre[1]
-                 }
+                    name: g
+                }
             })
         })
         const allGenres = await Genre.findAll();
