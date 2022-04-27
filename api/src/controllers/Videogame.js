@@ -4,7 +4,7 @@ const { KEY } = process.env;
 const { Videogame, Genre } = require("../db");
 
 
-// 3328      The Witcher 3: Wild Hunt
+// 3328  The Witcher 3: Wild Hunt
 
 const apiGames = async (req, res) => {
     try {
@@ -44,9 +44,9 @@ const dbGames = async () => {
 const getAllGames = async (req, res) => {
   const { page, name } = req.query;
   const dataDb = await dbGames();
-  console.log(dataDb)
+  //console.log(dataDb)
   const dataApi = await apiGames();
-  const allGames =  [...dataDb, ...dataApi]; // dataApi
+  const allGames =  [...dataDb, ...dataApi]; 
   if (name) {
     //console.log(name.toLowerCase())
     const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); //filter porque find solo uno //== name.toLowerCase());
@@ -68,21 +68,28 @@ const getAllGames = async (req, res) => {
    //return res.status(200).send(dataApi);
 };
 
+
 const getById = async (req, res) => {
     const { id } = req.params;
-
+    //console.log(id.length) //36
     try {
+      if(id.length != 36){
         const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${KEY}`);
         const info = {
             name: game.data.name,
-            image: game.data.background_image_additional, //mirar para la DB 
+            image: game.data.background_image_additional, 
             genres: game.data.genres.map(g => g.name),
             description: game.data.description_raw,
             rating: game.data.rating,
             released: game.data.released,
         }
-        //console.log(info)
         return res.status(200).send(info);
+      }if(id.length == 36){
+        const dataDb = await dbGames();
+        const gameId = await dataDb.find(g => g.id == id);
+        return res.status(200).send(gameId);
+      }
+       
     } catch (error) {
         return error;
         //return res.status(404).send('Not found');
@@ -103,72 +110,21 @@ const createGame = async (req, res) => {
   res.json({data: newGame, msg:'Successful create'});
 };
 
-
-
-// const dd = async (req, res) => {
-//   const { id } = req.params;
-//   //const dataDb = await db();
-//   const dataApi = await api();
-//   const allPokemons = [...dataDb, ...dataApi];
-//   if (id) {
-//     const pokeId = await allPokemons.filter((p) => p.id == id);
-//     if (pokeId.length) {
-//       return res.json(pokeId);
-//     } else {
-//       return res.status(404).send("problems with id");
-//     }
-//   }
-// };
-
-
-
-
-// const getAllPokemon = async (req, res) => {
-//   const { page, name } = req.query;
-//   const dataDb = await db();
-//   const dataApi = await api();
-//   // const allPoke = [...dataDb, ...dataApi];
-//   // if (name) {
-//   //   const pokeByName = allPoke.find((n) => n.name == name.toLowerCase());
-//   //   return res.json(pokeByName);
-//   // }
-//   // if (page) {
-//   //   if (page == 1) {
-//   //     // const pages = allPoke.slice(page - 1, page * 12);
-//   //     //console.log('del PAGE', pages);
-//   //     const pages = allPoke.slice(page - 1, page * 2);
-//   //     return res.json(pages);
-//   //   } else {
-//   //     // const pages = allPoke.slice((page - 1) * 12, page * 12);
-//   //     const pages = allPoke.slice((page - 1) * 2, page * 2);
-//   //     return res.json(pages);
-//   //   }
-//   // }
-
-//   console.log('del API', dataApi);
-//   return dataApi;
-
-
-//   // console.log('del GETALL', allPoke);
-//   // return allPoke;
-// };
-
-// const deletePoke = async (req, res) => {
-//   const { id } = req.params;
-//   // const allPokemons = await db();
-//   if (id) {
-//     const pokeIdDelete = Pokemon.destroy({
-//       where: {
-//         id: id,
-//       },
-//     });
-//     res.send("Successful delete");
-//   } else {
-//     return res.status(404).json({
-//       error: "No ID",
-//     });
-//   }
-// };
+const deleteGame = async (req, res) => {
+  const { id } = req.params;
+  if (id) {
+    const gameIdDelete = Videogame.destroy({
+      where: {
+        id: id,
+      },
+    });
+    res.send("Successful delete");
+  } else {
+    return res.status(404).json({
+      error: "No ID",
+    });
+  }
+};
 
 module.exports = {
     getAllGames,
