@@ -1,0 +1,55 @@
+
+body{
+    /* background-image: url(fondo.png); */
+    background-color: rgb(37, 33, 33);
+    /* background-size: 100%;
+    background-repeat: no-repeat;  */
+} 
+.container {
+    display: flex;         
+    flex-direction: column;
+ 
+  }
+
+.imgL{
+    display: block;
+    margin: 0px auto;
+} 
+.img2{
+    display: block;
+    margin: 0px auto;
+    background:-webkit-radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
+    background:-o-radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
+    background:-moz-radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
+    background:radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
+} 
+.btnGo {
+	box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:40px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: Georgia, serif;
+    font-variant: small-caps;
+    font-weight: 500;
+	font-size:30px;
+	padding:10px 50px;
+	text-decoration:none;
+
+	text-shadow:0px 1px 0px #263666;
+    margin-top: 4%;
+    margin-left: 45%;
+}
+.btnGo:hover {
+	background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+	background-color:#415989;
+}
+.btnGo:active {
+	position:relative;
+	top:1px;
+}
+
+     

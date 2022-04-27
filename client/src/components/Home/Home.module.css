@@ -1,0 +1,108 @@
+.container{
+    background-color: rgb(84, 83, 90);
+}
+.container2{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+.filters{
+   /* background-color:red; */
+    display: flex;   
+    justify-content: space-between;
+    align-items: center;
+    /* Arriba | Derecha | Abajo | Izquierda */
+    /* margin:2% 3% 0 3%; */
+
+  
+}
+
+.btngroup{
+    display: flex;   
+    align-items: center;
+    margin-left:11%;
+}
+.cards{
+   display: grid;  
+   grid-template-columns: repeat(5,1fr);
+   margin:15px;
+   align-items: center;
+   /* grid-gap: 10px; */
+    /* float:left; */
+}
+.inputSearch{
+    color:rgb(189, 186, 186);
+    font-family: "Fredoka", sans-serif;
+    font-weight: 420;
+    padding: 5px;
+    border-color: rgb(189, 186, 186);
+    /* outline: none; */
+    background-color: transparent;
+    width:230px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius:20px 0px 0px 20px;
+}
+/* .inputSearch::placeholder {
+    color: rgb(163, 163, 163);
+} */
+.btnSubmit {
+    width: 38px;
+    height: 29px;
+    background-color: transparent;
+    color: rgb(165, 159, 159);
+    border-radius:0px 20px 20px 0px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.btnSubmit:hover {
+    background-color: rgb(22, 161, 161);
+    color: rgb(204, 204, 204);
+}
+.gif{
+    height:250px;
+    margin-top:12%;
+    margin-left:140%;
+}
+
+.ul{
+
+    display: inline-block;
+    padding: 0;
+  
+    text-align: center;
+}
+.li{
+    display: inline;
+    cursor:pointer;
+}
+.a{
+    color: rgb(234, 225, 225);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    /* border: 1px solid #ddd; */
+    cursor:pointer;
+}
+
+.a:hover:not(.active) {
+    background-color: #ddd;
+    color: black
+}
+
+.btnAll{
+    background-color: transparent;
+
+     color: rgb(208, 195, 195);
+     font-family: Georgia, serif;
+     font-size: 13px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin: 20px;
+    padding: 8px 20px 8px 20px;
+    border-radius: 30px;
+
+  }
+  .btnAll:hover {
+    background-color: rgb(89, 156, 239);
+    color: black
+  }

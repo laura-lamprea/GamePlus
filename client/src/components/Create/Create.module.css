@@ -1,0 +1,121 @@
+.container{
+    display: flex;          
+    align-items: center;
+    justify-content: space-around;
+}
+
+.erros{
+    background-color:rgb(228, 16, 16);
+    color:white;
+    text-align:center; 
+    border-radius: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 22px;
+}
+
+.container1{
+    display: flex;     
+    flex-direction: column;     
+    align-items: center;
+    margin-left: 6%;
+
+}
+.welcome{
+    font-size:40px;
+    font-family: Georgia, serif;
+    color: rgb(203, 182, 182);
+}
+
+.form{
+/* color: fff;
+    display: block;
+    margin-top:10%;
+    padding:50px;
+    margin-right: 35%;
+    margin-left: 35%;
+     */
+    border-radius: 30px;
+    border: 3px solid rgb(203, 182, 182);
+    color: rgb(162, 158, 158);
+    padding: 2rem 1rem;
+    margin:4% 1% 0% 0%; 
+    width:500px;
+ 
+    /* padding: 2rem 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin:5% 20% 10% 20%; */
+}
+
+.slider{
+    background-color: red;
+}
+label {
+    padding: 4px 20px 5px 0;
+    display: inline-bbloclock;
+}
+
+
+.container2{
+    display: flex;          
+    flex-direction: column;
+}
+
+.container3{
+    margin-top: 3%;
+    margin-bottom: 4%;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container4{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input{
+    background-color:transparent;
+    color: rgb(203, 182, 182);
+}
+a{
+    padding-left:10px;
+}
+.btnx{
+    background-color:transparent;
+    border-color:none;
+    color: rgb(203, 182, 182); ;
+}
+.btnsub{
+    text-align: center;
+    margin-top:4%
+}
+
+.btnBack {
+    background-color: transparent;
+
+     color: rgb(208, 195, 195);
+     font-family: Georgia, serif;
+     font-size: 21px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin: 20px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+
+  }
+  .btnBack:hover {
+    background-color: #4caf50; /* verde */
+    color: white;
+  }
+
+
+
+
