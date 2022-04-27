@@ -35,25 +35,25 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 genres: action.payload
             }
-        // case 'ORDER_ALFA':
-        //     const allPoke = state.games
-        //     const pokeOrderAlfa = action.payload === 'asc' ?
-        //         allPoke.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
-        //         : allPoke.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
-        //     //https://www.kuworking.com/javascript-hook-para-ordenar-listas
-        //     return {
-        //         ...state,
-        //         games: pokeOrderAlfa
-        //     }
-        // case 'ORDER_FORCE':
-        //     const allPokes = state.games
-        //     const pokeOrderForce = action.payload === 'asc' ?
-        //         allPokes.sort((a, b) => (a.force > b.force ? 1 : a.force < b.force ? -1 : 0))
-        //         : allPokes.sort((a, b) => (a.force > b.force ? -1 : a.force < b.force ? 1 : 0))
-        //     return {
-        //         ...state,
-        //         games: pokeOrderForce
-        //     }
+        case 'ORDER_ALFA':
+            const allGame = state.games
+            const gamesOrderAlfa = action.payload === 'asc' ?
+                allGame.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
+                : allGame.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
+            //https://www.kuworking.com/javascript-hook-para-ordenar-listas
+            return {
+                ...state,
+                games: gamesOrderAlfa
+            }
+        case 'ORDER_RATING':
+            const gamesAll = state.games
+            const pokeOrderForce = action.payload === 'asc' ?
+                gamesAll.sort((a, b) => (a.rating > b.rating ? 1 : a.rating < b.rating ? -1 : 0))
+                : gamesAll.sort((a, b) => (a.rating > b.rating ? -1 : a.rating < b.rating ? 1 : 0))
+            return {
+                ...state,
+                games: pokeOrderForce
+            }
 
         case 'FILTER_CREATED':
             const allGames = state.gamescopy

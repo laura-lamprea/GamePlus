@@ -55,19 +55,19 @@ export function filterCreated(payload) {
     }
 }
 
-// export function orderAlfa(payload) {
-//     return {
-//         type: 'ORDER_ALFA',
-//         payload
-//     }
-// }
+export function orderAlfa(payload) {
+    return {
+        type: 'ORDER_ALFA',
+        payload
+    }
+}
 
-// export function orderForce(payload) {
-//     return {
-//         type: 'ORDER_FORCE',
-//         payload
-//     }
-// }
+export function orderRating(payload) {
+    return {
+        type: 'ORDER_RATING',
+        payload
+    }
+}
 
 
 

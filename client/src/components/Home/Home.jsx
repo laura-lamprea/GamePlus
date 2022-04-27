@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllGames, getGenres, filterGenre, filterCreated } from '../../redux/actions'
+import { getAllGames, getGenres, filterGenre, filterCreated, orderAlfa, orderRating} from '../../redux/actions'
 import Card from '../Card/Card'
 // import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
@@ -12,6 +12,7 @@ export default function HomePage() {
     const dispatch = useDispatch()
     const allGames = useSelector(state => state.games)
     const [page, setPage] = useState(1)
+    const [order, setOrder] = useState('')
     const genres = useSelector(state => state.genres)
 
     useEffect(() => {
@@ -28,16 +29,16 @@ export default function HomePage() {
         console.log('pagina', page)
     }
 
-    // function orderAlfaHdl(e) {
-    //     e.preventDefault();
-    //     dispatch(orderAlfa(e.target.value));
-    //     setOrder(e.target.value)
-    // }
-//     function orderForceHdl(e) {
-//         e.preventDefault();
-//         dispatch(orderForce(e.target.value));
-//         setOrder(e.target.value)
-//     }
+    function orderAlfaHdl(e) {
+        e.preventDefault();
+        dispatch(orderAlfa(e.target.value));
+        setOrder(e.target.value)
+    }
+    function orderRatingHdl(e) {
+        e.preventDefault();
+        dispatch(orderRating(e.target.value));
+        setOrder(e.target.value)
+    }
     function filterGenreHdl(e) {
         dispatch(filterGenre(e.target.value));
     }
@@ -56,16 +57,16 @@ export default function HomePage() {
                     <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All games</button>
                 </div> */}
                 <div>
-                    {/* <select onChange={(e) => orderAlfaHdl(e)}>
+                    <select onChange={(e) => orderAlfaHdl(e)}>
                         <option >Name</option>
                         <option value='asc'>A-Z</option>
                         <option value='des'>Z-A</option>
-                    </select> */}
-                    {/* <select onChange={(e) => orderForceHdl(e)}>
-                        <option >Strength</option>
-                        <option value='asc'>to the strongest</option>
-                        <option value='des'>to the weakest</option>
-                    </select> */}
+                    </select>
+                    <select onChange={(e) => orderRatingHdl(e)}>
+                        <option>Rating</option>
+                        <option value='asc'>to the popular</option>
+                        <option value='des'>to the unpopular</option>
+                    </select>
                     <select onChange={(e) => filterCreatedHdl(e)}>
                         <option >Origin</option>
                         <option value='all'>All</option>
@@ -107,14 +108,15 @@ export default function HomePage() {
 
         <nav className={H.cards}>
             {
-                allGames.length && allGames.map(g => {  //SI EL ESTADO EXITE
+                allGames.length ? allGames.map(g => {  //SI EL ESTADO EXITE
                     return (
                         // <Link to={`/details/${p.id}`} style={{ textDecoration: 'none' }} >
                             <Card name={g.name} img={g.image} rating={g.rating} />
                         // </Link>
                     );
                 }) 
-                // : <img className={H.gif} src={gif} height="250px" align="center" />
+                : <h2>LOADING ......</h2>
+                // <img className={H.gif} src={gif} height="250px" align="center" />
             }
         </nav>
     </div>
