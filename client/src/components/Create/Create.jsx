@@ -100,7 +100,7 @@
 //         dispatch(createPokemon(input))
 //         //alert("personaje creado")
 //         notie.alert({ type: 1, text: 'Successful creation!', time: 3 })
-//         //history.push('/pokemons') //para ir al home
+//         //history.push('/games') //para ir al home
 //     }
 //     function handleDeleteType(e, deleteType) {
 //         e.preventDefault();

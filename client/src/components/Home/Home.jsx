@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllGames } from '../../redux/actions'
+import { getAllGames, getGenres, filterGenre, filterCreated } from '../../redux/actions'
 import Card from '../Card/Card'
 // import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
@@ -12,10 +12,11 @@ export default function HomePage() {
     const dispatch = useDispatch()
     const allGames = useSelector(state => state.games)
     const [page, setPage] = useState(1)
-    // const types = useSelector(state => state.types)
+    const genres = useSelector(state => state.genres)
+
     useEffect(() => {
         dispatch(getAllGames(page))
-        //dispatch(getTypes())
+        dispatch(getGenres())
     }, [dispatch])  //monstar y ejecutar cuando tenga esto [esto] o hacer un useeffect de getallgames siempre y cuando tenga otro estado por ejemplo genres si no esta, que no lo haga
 
     function handlePage(e) {
@@ -27,44 +28,63 @@ export default function HomePage() {
         console.log('pagina', page)
     }
 
+    // function orderAlfaHdl(e) {
+    //     e.preventDefault();
+    //     dispatch(orderAlfa(e.target.value));
+    //     setOrder(e.target.value)
+    // }
+//     function orderForceHdl(e) {
+//         e.preventDefault();
+//         dispatch(orderForce(e.target.value));
+//         setOrder(e.target.value)
+//     }
+    function filterGenreHdl(e) {
+        dispatch(filterGenre(e.target.value));
+    }
+    function filterCreatedHdl(e) {
+        dispatch(filterCreated(e.target.value));
+    }
+
+
+
     return(
         <div className={H.container}>
         {/* <Navbar /> */}
         <div className={H.container2} >
-            {/* <div className={H.filters}>
+            <div className={H.filters}>
+                {/* <div>
+                    <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All games</button>
+                </div> */}
                 <div>
-                    <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Pokemons</button>
-                </div>
-                <div>
-                    <select onChange={(e) => orderAlfaHdl(e)}>
+                    {/* <select onChange={(e) => orderAlfaHdl(e)}>
                         <option >Name</option>
                         <option value='asc'>A-Z</option>
                         <option value='des'>Z-A</option>
-                    </select>
-                    <select onChange={(e) => orderForceHdl(e)}>
+                    </select> */}
+                    {/* <select onChange={(e) => orderForceHdl(e)}>
                         <option >Strength</option>
                         <option value='asc'>to the strongest</option>
                         <option value='des'>to the weakest</option>
-                    </select>
+                    </select> */}
                     <select onChange={(e) => filterCreatedHdl(e)}>
                         <option >Origin</option>
                         <option value='all'>All</option>
                         <option value='created'>Created</option>
                         <option value='api'>Existing</option>
                     </select>
-                    <select name="type" id="type" onChange={(e) => filterTypeHdl(e)}>
-                        <option >Types</option>
+                    <select name="genre" id="genre" onChange={(e) => filterGenreHdl(e)}>
+                        <option >Genres</option>
                         <option value='all'>All</option>
-                        {types.map(t => (
-                            <option value={t.name} >{t.name}</option>
+                        {genres.map(g => (
+                            <option value={g.name} >{g.name}</option>
                         ))}
                     </select>
                 </div>
-                <div>
+                {/* <div>
                     <input className={H.inputSearch} type="text" autoComplete='off' placeholder=" Search by exact Pokemon name..." onChange={(e) => handleInputChange(e)} />
                     <button className={H.btnSubmit} disabled={!botonActivo} type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
-                </div>
-            </div> */}
+                </div> */}
+            </div>
             {/* <div>
                 <ul className={H.ul}>
                     <li className={H.li}><a className={H.a}>«</a></li>
@@ -79,12 +99,11 @@ export default function HomePage() {
 
 
         <div className={H.btngroup}>
-                    <button type="button" onClick={(e) => handlePage(e)} >1</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >2</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >3</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >4</button>
-               
-            </div>
+            <button type="button" onClick={(e) => handlePage(e)} >1</button>
+            <button type="button" onClick={(e) => handlePage(e)} >2</button>
+            <button type="button" onClick={(e) => handlePage(e)} >3</button>
+            <button type="button" onClick={(e) => handlePage(e)} >4</button>
+        </div>
 
         <nav className={H.cards}>
             {
@@ -106,7 +125,7 @@ export default function HomePage() {
 // import { Link } from 'react-router-dom'
 // import { useEffect } from 'react' //useState
 // import { useDispatch, useSelector } from 'react-redux'
-// import { getAllPokemons, getPokemonName, getTypes, orderAlfa, orderForce, filterType, filterCreated } from '../../redux/actions'
+// import { getAllgames, getPokemonName, getTypes, orderAlfa, orderForce, filterType, filterCreated } from '../../redux/actions'
 // import Card from '../Card/Card'
 // import Navbar from '../Navbar/Navbar'
 // import H from './Home.module.css';
@@ -115,15 +134,15 @@ export default function HomePage() {
 // export default function HomePage() {
 //     const dispatch = useDispatch()
 //     // const types = useSelector(state => state.types)
-//     const allPokemons = useSelector(state => state.pokemons)
+//     const allgames = useSelector(state => state.games)
 //     //
 //     ////DISPATCH QUIEN VA A ENVIAR LA INFO AL REDUCER
 //     //es igual al mapstateToprops 
-//     //me guardo con selector todo lo que esta en el estado de pokemons
+//     //me guardo con selector todo lo que esta en el estado de games
 //     //ETADO, ME DEVUELVE SOLO ESA PARTE DEL ESTADO
 //     //traernos del estado los pokemones cuando el componente se monta:
 //     // useEffect(() => {
-//     //     dispatch(getPokemons()) // despoacho esa accin: //es lo mismo que mapdispatchto porps
+//     //     dispatch(getgames()) // despoacho esa accin: //es lo mismo que mapdispatchto porps
 //     // })
 
 //     // const [order, setOrder] = useState('')
@@ -143,7 +162,7 @@ export default function HomePage() {
 //         // 
 //         //despoacho esa accin: 
 //         //es lo mismo que mapdispatchto porps
-//         dispatch(getAllPokemons(page))
+//         dispatch(getAllgames(page))
 //         dispatch(getTypes())
 //     }, [dispatch])
 //     //ANTES DE QUE SE RENDERICE, DESPACHA LACCION
@@ -151,7 +170,7 @@ export default function HomePage() {
 
 //     function handleClick(e) {
 //         e.preventDefault();
-//         dispatch(getAllPokemons(page))
+//         dispatch(getAllgames(page))
 //     }
 
 //     function handlePage(e) {
@@ -163,36 +182,19 @@ export default function HomePage() {
 //     }
 //     function handleSubmit(e) {
 //         e.preventDefault();
-//         // console.log(allPokemons.map(p => p.name))
+//         // console.log(allgames.map(p => p.name))
 //         dispatch(getPokemonName(name))
 //         setName(' ')
 //     }
 //     const handleInputChange = (e) => {
 //         e.preventDefault();
 //         setName(e.target.value)
-//         // if(allPokemons.filter(p=>p.name === e.target.value)){
+//         // if(allgames.filter(p=>p.name === e.target.value)){
 //         //     setBotonActivo(true)
 //         // }else {
 //         //     setBotonActivo(false)
 //         // }
 //     };
-//     function orderAlfaHdl(e) {
-//         e.preventDefault();
-//         dispatch(orderAlfa(e.target.value));
-//         setOrder(e.target.value)
-//     }
-//     function orderForceHdl(e) {
-//         e.preventDefault();
-//         dispatch(orderForce(e.target.value));
-//         setOrder(e.target.value)
-//     }
-//     function filterTypeHdl(e) {
-//         dispatch(filterType(e.target.value));
-//     }
-//     function filterCreatedHdl(e) {
-//         dispatch(filterCreated(e.target.value));
-//     }
-
 
 //     return (
 //         <div className={H.container}>
@@ -200,7 +202,7 @@ export default function HomePage() {
 //             <div className={H.container2} >
 //                 <div className={H.filters}>
 //                     <div>
-//                         <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Pokemons</button>
+//                         <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All games</button>
 //                     </div>
 //                     <div>
 //                         <select onChange={(e) => orderAlfaHdl(e)}>
@@ -255,7 +257,7 @@ export default function HomePage() {
 
 //             <nav className={H.cards}>
 //                 {
-//                     allPokemons.length ? allPokemons.map(p => {  //SI EL ESTADO EXITE
+//                     allgames.length ? allgames.map(p => {  //SI EL ESTADO EXITE
 //                         return (
 //                             <Link to={`/details/${p.id}`} style={{ textDecoration: 'none' }} >
 //                                 <Card name={p.name} force={p.force} imgT={p.imgT} type={p.type ? p.type.map(t => ` ${t} `) : (p.types.map(t => ` ${t.name} `))} />

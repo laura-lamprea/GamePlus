@@ -1,5 +1,5 @@
 import React from 'react';
-// import { getAllPokemons, getTypes, filterType, filterCreated, orderAlfa, orderForce } from '../../redux/actions'
+// import { getAllgames, getTypes, filterType, filterCreated, orderAlfa, orderForce } from '../../redux/actions'
 // import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import logo from "./logo.png";
