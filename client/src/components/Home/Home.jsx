@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllGames, getGenres, filterGenre, filterCreated, orderAlfa, orderRating} from '../../redux/actions'
+import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating} from '../../redux/actions'
 import Card from '../Card/Card'
 // import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
@@ -11,9 +11,11 @@ import H from './Home.module.css';
 export default function HomePage() {
     const dispatch = useDispatch()
     const allGames = useSelector(state => state.games)
+    const genres = useSelector(state => state.genres)
     const [page, setPage] = useState(1)
     const [order, setOrder] = useState('')
-    const genres = useSelector(state => state.genres)
+    const [name, setName] = useState('')
+    
 
     useEffect(() => {
         dispatch(getAllGames(page))
@@ -28,6 +30,17 @@ export default function HomePage() {
         // console.dir(e.target)
         console.log('pagina', page)
     }
+    function handleSubmit(e) {
+        e.preventDefault();
+        // console.log(allgames.map(p => p.name))
+        dispatch(getGameName(name))
+        // setName(' ')
+    }
+    const handleInputChange = (e) => {
+        e.preventDefault();
+        setName(e.target.value)
+    };
+        
 
     function orderAlfaHdl(e) {
         e.preventDefault();
@@ -81,10 +94,12 @@ export default function HomePage() {
                         ))}
                     </select>
                 </div>
-                {/* <div>
-                    <input className={H.inputSearch} type="text" autoComplete='off' placeholder=" Search by exact Pokemon name..." onChange={(e) => handleInputChange(e)} />
-                    <button className={H.btnSubmit} disabled={!botonActivo} type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
-                </div> */}
+
+                <div>
+                    <input className={H.inputSearch} type="text" autoComplete='off' placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
+                    <button className={H.btnSubmit}  type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
+                </div>
+
             </div>
             {/* <div>
                 <ul className={H.ul}>
@@ -110,9 +125,9 @@ export default function HomePage() {
             {
                 allGames.length ? allGames.map(g => {  //SI EL ESTADO EXITE
                     return (
-                        // <Link to={`/details/${p.id}`} style={{ textDecoration: 'none' }} >
+                        <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} >
                             <Card name={g.name} img={g.image} rating={g.rating} />
-                        // </Link>
+                        </Link>
                     );
                 }) 
                 : <h2>LOADING ......</h2>

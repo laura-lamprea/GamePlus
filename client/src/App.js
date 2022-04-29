@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/Landing/Landing'
 import Home from './components/Home/Home'
+import DetailPage from './components/Detail/Details'
 
 function App() {
   return (
@@ -13,15 +14,15 @@ function App() {
           <Route path='/home'>
             <Home />
           </Route>
-          {/* <Route path='/create'>
+         {/* <Route path='/create'>
             <CreatePokemon />
-          </Route>
+          </Route> */}
           <Route path='/details/:id'>
             <DetailPage />
           </Route>
-          <Route path='/about'>
+          {/* <Route path='/about'>
             <AboutPage />
-          </Route> */}
+          </Route>  */}
         </Switch>
     </div>
     </BrowserRouter>

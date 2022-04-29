@@ -9,8 +9,8 @@ export default function Card({ name, img, rating }) {
     return (
         <div>
              {/* className={C.card} */}
-          <p>{name}</p>
-          <img src={img} width="200px" height="150" alt="Not found" />          
+          <p>{name}nombre</p>
+          <img src={img} width="200px" height="150" alt="Image Not Found" />          
           <p>{rating}</p>
         </div>
     )

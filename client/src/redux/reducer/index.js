@@ -8,28 +8,30 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_ALL_GAMES':
-            // console.log(action.payload)
             return {
                 ...state,
                 games: action.payload,  //en mi estado games que es un [], mandar todo lo de la accion GET_ALL..
                 gamescopy: action.payload
             }
+        case 'GET_GAME': 
+        console.log('get id game',action.payload)
+            return {
+                ...state,
+                game: action.payload   
+            }
 
-        // case 'GET_POKEMON_NAME':
-        //     console.log(action.payload)
-        //     return {
-        //         ...state,
-        //         games: [action.payload]  //games es lo que estoy renderizando
-        //     }
-        // case 'GET_POKEMON':
-        //     return {
-        //         ...state,
-        //         pokemon: action.payload
-        //     }
-        // case 'CREATE_POKEMON': //COMO CONECTA ESTE REDUCER CON LA ACTION SI NO TIENE NADA QUE DIGA POST_POKEMON LA ACTION?
-        //     return {
-        //         ...state, //no sirve de nada pero lo necesito en el reduce
-        //     }
+        case 'GET_GAME_NAME':
+            console.log('get name',action.payload)
+            return {
+                ...state,
+                games: action.payload  //entre [] si no funciona
+            }
+
+        case 'CREATE_GAME': //COMO CONECTA ESTE REDUCER CON LA ACTION SI NO TIENE NADA QUE DIGA POST_POKEMON LA ACTION?
+            return {
+                ...state, //no sirve de nada pero lo necesito en el reduce
+            }
+
         case 'GET_GENRES':
             return {
                 ...state,
