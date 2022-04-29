@@ -29,6 +29,11 @@ export default function DetailPage() {
                             <div className={D.container2}>
                                 <h1>{game.name}</h1>
                             </div>
+                            <div className={D.container5}>
+                                {
+                                  game.platforms?.map(g =><a className={D.type}>{g}</a>)  
+                                }
+                            </div>
                             <img src={game.image} height="300px" alt=" " />
                             <h2>{game.rating}</h2>
                             <h2>{game.released}</h2>
@@ -43,6 +48,8 @@ export default function DetailPage() {
                                     <a>LOADING</a>
                                 }
                             </div>
+                           
+
                      
                         </div> : 
                         <a>LOADINGGGG</a>

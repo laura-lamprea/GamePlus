@@ -8,17 +8,14 @@ const { Videogame, Genre } = require("../db");
 
 const apiGames = async (req, res) => {
   try {
-
-    let totalGames = [];
-    let page = 1;
-    while (page < 6) {
-      const gamesFromPage = await axios(`https://api.rawg.io/api/games?key=${KEY}&page=${page}`);
-      let { results } = gamesFromPage.data;
-      totalGames = totalGames.concat(results);
-      page++;
+    let arrGames = [];
+    for (let i = 1; i < 6; i++) {
+      const gamesByPage = await axios(`https://api.rawg.io/api/games?key=${KEY}&page=${i}`);
+      let { results } = gamesByPage.data;
+      arrGames = arrGames.concat(results);
     }
 
-    const gamesApi = totalGames.map(g => {
+    const gamesApi = arrGames.map(g => {
       return {
         id: g.id,
         name: g.name,
@@ -29,32 +26,10 @@ const apiGames = async (req, res) => {
     });
 
     //console.log(gamesApi);
-    return (gamesApi)
-    // const URL = `https://api.rawg.io/api/games?key=${KEY}`;
-    // const arrURL = [URL, URL + '&page=2', URL + '&page=3', URL + '&page=4', URL + '&page=5'] //20 por cada uno para un total de 100
-
-    //console.log(arrURL)
-    // const datosApi = await Promise.all(arrURL.map(axios.get)); //&page_size=40 //100 y paginar 15  6.6667
-    // //console.log('DATOS API',datosApi)
-    // const gamesApi = datosApi.map(todo => todo.data.results.map(g => {
-    //   return {
-    //     id: g.id,
-    //     name: g.name,
-    //     image: g.background_image,
-    //     rating: g.rating,
-    //     genres: g.genres.map(g => g.name),
-    //   };
-    // }));
-
-
-    // const allGamesApi = gamesApi.map(pos=>pos.concat(pos))
-    //console.log(allGamesApi.length);
+    return gamesApi
     //return res.status(200).send(gamesApi);
-    //return gamesApi;
   } catch (error) {
-    // console.error(error);
-    return error;
-    //return res.status(404).send('Not found');
+    return error; //return res.status(404).send('Not found'); // console.error(error);
   }
 };
 
@@ -106,10 +81,12 @@ const getById = async (req, res) => {
   try {
     if (id.length != 36) {
       const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${KEY}`);
+      //console.log(game)
       const info = {
         name: game.data.name,
         image: game.data.background_image_additional,
         genres: game.data.genres.map(g => g.name),
+        platforms:  game.data.platforms.map(p => p.platform.name),
         description: game.data.description_raw,
         rating: game.data.rating,
         released: game.data.released,

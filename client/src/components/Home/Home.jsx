@@ -32,15 +32,20 @@ export default function HomePage() {
     }
     function handleSubmit(e) {
         e.preventDefault();
-        // console.log(allgames.map(p => p.name))
         dispatch(getGameName(name))
-        // setName(' ')
+        setName('cambio')
     }
     const handleInputChange = (e) => {
         e.preventDefault();
         setName(e.target.value)
     };
+
+    function handleClick(e) {
+        e.preventDefault();
         
+        dispatch(getAllGames(page))
+        setName('cambio')
+    }
 
     function orderAlfaHdl(e) {
         e.preventDefault();
@@ -66,9 +71,9 @@ export default function HomePage() {
         {/* <Navbar /> */}
         <div className={H.container2} >
             <div className={H.filters}>
-                {/* <div>
-                    <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All games</button>
-                </div> */}
+                <div>
+                    <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Videoames</button>
+                </div>
                 <div>
                     <select onChange={(e) => orderAlfaHdl(e)}>
                         <option >Name</option>
@@ -96,7 +101,7 @@ export default function HomePage() {
                 </div>
 
                 <div>
-                    <input className={H.inputSearch} type="text" autoComplete='off' placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
+                    <input className={H.inputSearch} type="text" autoComplete='on' placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
                     <button className={H.btnSubmit}  type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
                 </div>
 
@@ -119,6 +124,9 @@ export default function HomePage() {
             <button type="button" onClick={(e) => handlePage(e)} >2</button>
             <button type="button" onClick={(e) => handlePage(e)} >3</button>
             <button type="button" onClick={(e) => handlePage(e)} >4</button>
+            <button type="button" onClick={(e) => handlePage(e)} >5</button>
+            <button type="button" onClick={(e) => handlePage(e)} >6</button>
+            <button type="button" onClick={(e) => handlePage(e)} >7</button>
         </div>
 
         <nav className={H.cards}>
