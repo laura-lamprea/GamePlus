@@ -1,55 +1,124 @@
+body {
+  background-image: url(fondo.jpg);
+  /* background-color: rgb(37, 33, 33); */
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: #000;
+  height: 100%;
+}
 
-body{
-    /* background-image: url(fondo.png); */
-    background-color: rgb(37, 33, 33);
-    /* background-size: 100%;
-    background-repeat: no-repeat;  */
-} 
 .container {
-    display: flex;         
-    flex-direction: column;
- 
-  }
+  background: rgba(27, 26, 42, 0.5);
+  width: 55%;
+  height: 617px;
+  clip-path: polygon(0% 0%, 60% 0%, 100% 100%, 0% 100%);
+  color: rgb(211, 214, 200);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+.containerInfo {
+  /* background: rgba(70, 60, 201, 0.5); */
+  padding: 17% 40% 5%  5%;
+  
+}
 
-.imgL{
-    display: block;
-    margin: 0px auto;
-} 
-.img2{
-    display: block;
-    margin: 0px auto;
-    background:-webkit-radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
-    background:-o-radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
-    background:-moz-radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
-    background:radial-gradient(circle farthest-side at center center, #e1bd09 0%, #252121 80%);
-} 
+
+@import url('https://fonts.googleapis.com/css?family=Unica+One');
+h1{
+    font-family: "Unica One", cursive;
+    text-transform: uppercase;
+    font-size: 58px;
+    letter-spacing: -5px;
+    word-spacing: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Coda');
+h2 {
+    font-family: Coda, cursive;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0);
+    text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+}
+
+p{
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  text-align:justify; 
+}
+
 .btnGo {
-	box-shadow:inset 0px 0px 15px 3px #23395e;
-	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-	background-color:#2e466e;
-	border-radius:40px;
-	border:1px solid #1f2f47;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family: Georgia, serif;
-    font-variant: small-caps;
-    font-weight: 500;
-	font-size:30px;
-	padding:10px 50px;
-	text-decoration:none;
-
-	text-shadow:0px 1px 0px #263666;
-    margin-top: 4%;
-    margin-left: 45%;
+  box-shadow: inset 0px 0px 15px 3px #23395e;
+  background-color: transparent;
+  border-radius: 40px;
+  border: 1px solid #9ba1a9;
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(211, 214, 200);
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: 30px;
+  padding: 10px 50px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #263666;
+  margin-top: 7%;
+  margin-left: 20%;
 }
+
 .btnGo:hover {
-	background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-	background-color:#415989;
-}
-.btnGo:active {
-	position:relative;
-	top:1px;
+  background: red
+
 }
 
-     
+.btnGo:active {
+  position: relative;
+  top: 1px;
+}
+
+/* .btnGo:hover {
+  background: linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+  background-color: #415989;
+}
+
+.btnGo:active {
+  position: relative;
+  top: 1px;
+} */
+/* 
+@import url('https://fonts.googleapis.com/css?family=Iceland');
+h1{
+    font-family: Iceland, cursive;
+    text-transform: uppercase;
+
+    font-size: 50px;
+    letter-spacing: -3px;
+    word-spacing: 4px;
+    color: rgb(223, 255, 97);
+    background-color: rgba(0, 0, 0, 0);
+    text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+} */
+
+/* @import url('https://fonts.googleapis.com/css?family=Tulpen+One');
+h1{
+    font-family: "Tulpen One", cursive;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 56px;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+    color: rgb(223, 255, 97);
+    background-color: rgba(0, 0, 0, 0);
+    text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+} */
+
+
+
+
+
+
+
