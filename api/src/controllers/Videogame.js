@@ -11,7 +11,7 @@ const apiGames = async (req, res) => {
     let arrGames = [];
     for (let i = 1; i < 6; i++) {
       const gamesByPage = await axios(`https://api.rawg.io/api/games?key=${KEY}&page=${i}`);
-      let { results } = gamesByPage.data;
+      const { results } = gamesByPage.data;
       arrGames = arrGames.concat(results);
     }
 
@@ -22,6 +22,7 @@ const apiGames = async (req, res) => {
         image: g.background_image,
         rating: g.rating,
         genres: g.genres.map(g => g.name),
+        platforms: g.platforms.map(p => p.platform.name), //solo se usa para traer los platforms
       };
     });
 
@@ -32,6 +33,43 @@ const apiGames = async (req, res) => {
     return error; //return res.status(404).send('Not found'); // console.error(error);
   }
 };
+
+const getPlatforms = async (req, res) => {
+  return res.send([
+    "Xbox One",
+    "Xbox Series S/X",
+    "Xbox 360",
+    "PlayStation 3",
+    "PlayStation 4",
+    "PlayStation 5",
+    "PC",
+    "Nintendo Switch",
+    "Linux",
+    "macOS",
+    "Android",
+    "iOS",
+    "Xbox",
+    "PS Vita",
+    "Web",
+    "Wii U",
+    "Nintendo 3DS",
+    "PlayStation 2",
+    "Dreamcast"
+  ])
+  // PROCESO DE COMO SAQUE LOS PLATFORMS
+  // const dataApi = await apiGames();
+  // let arrPlatforms = [];
+  // const platformsArr = dataApi.map(p => p.platforms);
+
+  // for (let i = 0; i < platformsArr.length; i++) {
+  //   for (let j = 0; j < platformsArr[i].length; j++) {
+  //     arrPlatforms.push( platformsArr[i][j])
+  //   }
+  // }
+  // return res.send([...new Set(arrPlatforms)]);
+
+};
+
 
 const dbGames = async () => {
   const gamesDb = await Videogame.findAll({
@@ -50,7 +88,7 @@ const getAllGames = async (req, res) => {
   const { page, name } = req.query;
 
   const dataDb = await dbGames();
- const dataApi = await apiGames();
+  const dataApi = await apiGames();
   //console.log('TAMANO', dataApi.length) /100
   const allGames = [...dataDb, ...dataApi];
   if (name) {
@@ -74,7 +112,6 @@ const getAllGames = async (req, res) => {
   //return res.status(200).send(dataApi);
 };
 
-
 const getById = async (req, res) => {
   const { id } = req.params;
   //console.log(id.length) //36
@@ -86,7 +123,7 @@ const getById = async (req, res) => {
         name: game.data.name,
         image: game.data.background_image_additional,
         genres: game.data.genres.map(g => g.name),
-        platforms:  game.data.platforms.map(p => p.platform.name),
+        platforms: game.data.platforms.map(p => p.platform.name),
         description: game.data.description_raw,
         rating: game.data.rating,
         released: game.data.released,
@@ -118,24 +155,27 @@ const createGame = async (req, res) => {
   res.json({ data: newGame, msg: 'Successful create' });
 };
 
-const deleteGame = async (req, res) => {
-  const { id } = req.params;
-  if (id) {
-    const gameIdDelete = Videogame.destroy({
-      where: {
-        id: id,
-      },
-    });
-    res.send("Successful delete");
-  } else {
-    return res.status(404).json({
-      error: "No ID",
-    });
-  }
-};
+
 
 module.exports = {
   getAllGames,
   getById,
-  createGame
+  createGame,
+  getPlatforms
 };
+
+// const deleteGame = async (req, res) => {
+//   const { id } = req.params;
+//   if (id) {
+//     const gameIdDelete = Videogame.destroy({
+//       where: {
+//         id: id,
+//       },
+//     });
+//     res.send("Successful delete");
+//   } else {
+//     return res.status(404).json({
+//       error: "No ID",
+//     });
+//   }
+// };

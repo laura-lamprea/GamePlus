@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/Landing/Landing'
 import Home from './components/Home/Home'
 import DetailPage from './components/Detail/Details'
+import CreateGame from './components/Create/Create'
+import AboutPage from './components/About/About'
 
 function App() {
   return (
@@ -14,15 +16,15 @@ function App() {
           <Route path='/home'>
             <Home />
           </Route>
-         {/* <Route path='/create'>
-            <CreatePokemon />
-          </Route> */}
+         <Route path='/create'>
+            <CreateGame />
+          </Route>
           <Route path='/details/:id'>
             <DetailPage />
           </Route>
-          {/* <Route path='/about'>
+          <Route path='/about'>
             <AboutPage />
-          </Route>  */}
+          </Route> 
         </Switch>
     </div>
     </BrowserRouter>

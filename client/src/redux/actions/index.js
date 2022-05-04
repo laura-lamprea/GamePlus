@@ -36,6 +36,14 @@ export function getGenres() {
     }
 }
 
+export function getPlatforms() {
+    return async function (dispatch) {
+        const response = await axios.get('http://localhost:3001/videogames/platforms');
+        return dispatch({ type: 'GET_PLATFORMS', payload: response.data })
+    }
+}
+
+
 // //LA ACCION ES DESPACHAR UN TIPO, DEJAR AQUI LA MENOR CANTIDAD DE LOGICA Y HACER MEJOR EN REDUCE O COMPONENTE
 export function filterGenre(payload) {
     return {

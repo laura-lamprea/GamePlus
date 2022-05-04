@@ -3,6 +3,7 @@ const initialState = {
     game: {},
     genres: [],
     gamescopy: [],
+    platforms: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,15 +14,15 @@ const rootReducer = (state = initialState, action) => {
                 games: action.payload,  //en mi estado games que es un [], mandar todo lo de la accion GET_ALL..
                 gamescopy: action.payload
             }
-        case 'GET_GAME': 
-        console.log('get id game',action.payload)
+        case 'GET_GAME':
+            console.log('get id game', action.payload)
             return {
                 ...state,
-                game: action.payload   
+                game: action.payload
             }
 
         case 'GET_GAME_NAME':
-            console.log('get name',action.payload)
+            console.log('get name', action.payload)
             return {
                 ...state,
                 games: action.payload  //entre [] si no funciona
@@ -37,6 +38,13 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 genres: action.payload
             }
+
+        case 'GET_PLATFORMS':
+            return {
+                ...state,
+                platforms: action.payload
+            }
+
         case 'ORDER_ALFA':
             const allGame = state.games
             const gamesOrderAlfa = action.payload === 'asc' ?

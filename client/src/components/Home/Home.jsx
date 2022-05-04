@@ -4,7 +4,7 @@ import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating} from '../../redux/actions'
 import Card from '../Card/Card'
-// import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
 // import gif from "../gif1.gif";
 
@@ -68,7 +68,7 @@ export default function HomePage() {
 
     return(
         <div className={H.container}>
-        {/* <Navbar /> */}
+        <Navbar />
         <div className={H.container2} >
             <div className={H.filters}>
                 <div>
