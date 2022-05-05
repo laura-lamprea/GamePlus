@@ -19,14 +19,14 @@ export default function Navbar() {
             <div className={N.btnNav}>
                 <Link to='/create' >
                     {/* <button className={N.btnCreate} >Create</button> */}
-                    <a  >Create</a>
+                    <a className={N.a} >Create</a>
 
                 </Link>
                 <Link to='/about'>
-                    <a >About</a>
+                    <a className={N.a}>About</a>
                 </Link>
                 <Link to='/about'>
-                    <a >Contact</a>
+                    <a className={N.a}>Contact</a>
                 </Link>
             </div>
 

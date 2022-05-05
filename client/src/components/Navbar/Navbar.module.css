@@ -18,7 +18,7 @@ header {
 a{
  font-family: Impact, Charcoal, sans-serif;
  font-family:'Times New Roman', Times, serif;
-font-size: 25px;
+font-size: 23px;
 letter-spacing: -1.6px;
 word-spacing: 1px;
 color: #c3c1c1;
@@ -29,7 +29,9 @@ font-variant: normal;
 text-transform: none;
 }
 a:hover{
-  color:#ff786f;
+  color:#fbc3bf;
+  text-decoration: none;
+
 }
 
  /* .container{

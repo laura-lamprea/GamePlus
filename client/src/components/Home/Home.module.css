@@ -3,7 +3,7 @@
 }
 
 .container2 {
-    background: rgba(84, 28, 62, 0.5);
+    background: rgba(55, 29, 45, 0.6);
     margin: 2% 5% 2% 5%;
     border-radius: 20px;
     /* background-image: url(fondo11.jpg);
@@ -115,10 +115,12 @@ select {
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin: 15px;
-    align-items: center;
+  background-color: #060609;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  padding: 20px 3% 10px 5%;
+
     /* grid-gap: 10px; */
     /* float:left; */
 }
@@ -162,7 +164,7 @@ select {
 
 
 
-input, button {
+input, .btn {
     box-sizing: border-box;
     height: 2rem;
     width: 12rem;
@@ -172,7 +174,7 @@ input, button {
     vertical-align: middle;
   }
   
-  button {
+  .btn {
     border: none;
     width: auto;
     min-width: 2rem;

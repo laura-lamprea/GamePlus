@@ -22,6 +22,7 @@ const apiGames = async (req, res) => {
         image: g.background_image,
         rating: g.rating,
         genres: g.genres.map(g => g.name),
+        released: g.released,
         platforms: g.platforms.map(p => p.platform.name), //solo se usa para traer los platforms
       };
     });
