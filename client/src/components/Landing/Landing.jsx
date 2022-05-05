@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import L from './Landing.module.css';
-// import logo from "./logo.png";
 
 export default function LadingPage() {
     return (

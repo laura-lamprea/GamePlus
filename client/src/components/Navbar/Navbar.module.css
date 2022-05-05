@@ -1,15 +1,38 @@
-.header{
-    /* background: #333; */
-    /* background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); */
-    /* background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%); */
-    /* background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); */
-    /* background-image: linear-gradient(to top, #09203f 0%, #537895 100%); */
-    background: linear-gradient(145deg, #322525, #3c2c2c);
-    box-shadow:  12px 12px 24px #291e1e,
-                 -12px -12px 24px #473434;
-  }
-  
-  .container{
+header {
+  background: rgba(27, 26, 42, 0.7);
+  display: flex;  
+  justify-content: space-between;    
+  align-items: center;   
+
+}
+
+.btnNav{
+  /* background-color: red; */
+  width: 20%;
+  text-align: center;
+  display: flex;
+    justify-content: space-around;
+    margin-right: 2%;
+}
+
+a{
+ font-family: Impact, Charcoal, sans-serif;
+ font-family:'Times New Roman', Times, serif;
+font-size: 25px;
+letter-spacing: -1.6px;
+word-spacing: 1px;
+color: #c3c1c1;
+font-weight: 10;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+}
+a:hover{
+  color:#ff786f;
+}
+
+ /* .container{
     width: 100%;
     height: 60px;
     display: flex;
@@ -19,77 +42,5 @@
     padding: 0;
     overflow: hidden;
   }  
-  .contSelect{
-    margin-left:9%;
-  }
-  select{
-    background: transparent;
-       border: none;
-       font-size: 14px;
-       height: 30px;
-       padding: 2px;
-       width: 100px;
-       color: rgb(216, 212, 212);
-       cursor: pointer;
-       font-family: 'Quicksand', sans-serif;
-       /* margin:0 10px 0 10px 0; */
-       margin-right: 10px;
-       margin-left: 10px;
-  }
-  select:hover{
-      /* background: #3a3b3e; */
-    background: #141f40;
-    color: #fff;
-  }
-  /* select:focus{ outline: none;} */
-  
-  .btnCreate{
-    float: left;
-    display: block;
-    color: rgb(223, 217, 217);
-    text-align: center;
-    padding: 10px;
-    /* padding-left: 20px;
-    padding-right: 20px; */
-    text-decoration: none;
-    height: 90%;
-    background-color: transparent;
-    border-radius: 10px;
-    margin:3px
-  }
-  
-  .btnCreate:hover {
-    background-color: rgb(36, 230, 165);
-    color:white;
-  }
-  
-  
-  .btnLogout{
-    float: left;
-    display: block;
-    color: rgb(223, 217, 217);
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-    height: 90%;
-    background-color: transparent;
-    border-radius: 10px;
-    margin:3px;
-    margin-right: 10px;
-    background: #528db5;
-     background: -webkit-gradient(linear, left top, left bottom, from(#005387), to(#528db5));
-     background: -webkit-linear-gradient(top, #005387, #528db5);
-     background: -moz-linear-gradient(top, #005387, #528db5);
-     background: -ms-linear-gradient(top, #005387, #528db5);
-     background: -o-linear-gradient(top, #005387, #528db5);
-  }
-  
-  .btnLogout:hover {
-    background-color: rgb(87, 163, 138);
-    color:white;
-  }
-  
-  .imgl{
-    margin-left: 10px;
-  }
-  
+  */
+ 
