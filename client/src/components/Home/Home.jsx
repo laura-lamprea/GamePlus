@@ -111,18 +111,25 @@ export default function HomePage() {
                         </select>
                     </div>
                 </div>
-                <div className={H.btngroup}>
-                    <button type="button" onClick={(e) => handlePage(e)} >1</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >2</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >3</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >4</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >5</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >6</button>
-                    <button type="button" onClick={(e) => handlePage(e)} >7</button>
-                </div>
+
             </div>
 
+            <div className={H.toplayer}></div>
 
+            <div className={H.pagination}>
+                
+                <h3>VideoGames</h3>
+                <img src={line} className={H.line} align="center" />
+                <div className={H.btngroup}>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >1</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >2</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >3</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >4</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >5</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >6</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >7</button>
+                </div>
+            </div>
 
 
             <nav className={H.cards}>
@@ -136,7 +143,7 @@ export default function HomePage() {
                                     rating={g.rating}
                                     released={g.released}
                                 />
-                             
+
                             </Link>
                         );
                     })
@@ -148,6 +155,8 @@ export default function HomePage() {
     )
 }
 
+{/* <button type="button" onClick={(e) => handlePage(e)} >6</button>
+<button type="button" onClick={(e) => handlePage(e)} >7</button> */}
 
 //   <div>
 //                 <ul className={H.ul}>

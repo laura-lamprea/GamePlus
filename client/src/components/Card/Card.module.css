@@ -8,13 +8,16 @@
   
     background-color: #0d0e1b;
 }
-.card:hover {
-  
-}
+
 .cardHead{
 width: 100%;
 height: 150px;
 }
+
+.cardHead:hover {
+
+}
+
 .imgGame{
     width: 100%;
     height: 100%;
