@@ -50,7 +50,6 @@ const rootReducer = (state = initialState, action) => {
             const gamesOrderAlfa = action.payload === 'asc' ?
                 allGame.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
                 : allGame.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
-            //https://www.kuworking.com/javascript-hook-para-ordenar-listas
             return {
                 ...state,
                 games: gamesOrderAlfa
@@ -76,12 +75,26 @@ const rootReducer = (state = initialState, action) => {
 
         case 'FILTER_BY_GENRE':
             const allGenres = state.gamescopy
-            const filteredByGenre =
-                action.payload === "all" ? allGenres : allGenres.filter((e) => e.genres?.includes(action.payload))
+            let filteredByGenreAll = []
+
+            if (action.payload === "all") {
+                filteredByGenreAll = allGenres
+            } else {
+                let filteredGenreApi = allGenres.filter((e) => e.genres?.includes(action.payload))
+                // let filteredGenreDb = allGenres.filter((e) => e.created_db).map((e) => e.name)
+                // console.log(filteredGenreDb)
+                filteredByGenreAll= [ ...filteredGenreApi]
+            }
+            // const filteredByGenreApi = action.payload === "all" ? allGenres : allGenres.filter((e) => e.genres?.includes(action.payload))
+            // const filterDB = action.payload === "all" ? allGenres : allGenres.filter((e)=>e.created_db)
+            // const filteredByGenreDB = 
+            // g.created_db ? g.genres.map(genre => ` ${genre.name} |`) : g.genres.map(genre => ` ${genre} |`)}
             //console.log(filteredByGenre); LOS CREADOS NO LOS FILTRA AUN
+
+            // .map((e) => e.genres.map(g=>g.name?.includes(action.payload)))
             return {
                 ...state,
-                games: filteredByGenre,
+                games: filteredByGenreAll,
             }
         default:
             return { ...state }
