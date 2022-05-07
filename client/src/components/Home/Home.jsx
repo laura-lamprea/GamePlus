@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
+// import { reset, destroy } from 'redux-form'
 import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating } from '../../redux/actions'
 import Card from '../Card/Card'
 import Navbar from '../Navbar/Navbar'
@@ -34,20 +35,16 @@ export default function HomePage() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(getGameName(name))
-        setName('cambio')
+        setName('')
     }
     const handleInputChange = (e) => {
         e.preventDefault();
         setName(e.target.value)
     };
-
     function handleClick(e) {
         e.preventDefault();
-
         dispatch(getAllGames(page))
-        setName('cambio')
     }
-
     function orderAlfaHdl(e) {
         e.preventDefault();
         dispatch(orderAlfa(e.target.value));
@@ -74,12 +71,8 @@ export default function HomePage() {
                 <div className={H.searchBar}>
                     <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Videoames</button>
                     <div>
-                        {/* <input className={H.inputSearch} type="text" autocomplete="off"  placeholder=" Search game..." onChange={(e) => handleInputChange(e)} /> */}
-                        <input className={H.inputSearch} required name="buscar" type="search" autoComplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
-                        <button className={H.btn} type="reset">x</button>
+                        <input className={H.inputSearch} value={name} type="search" required name="buscar"  autoComplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
                         <button className={H.btn} type="submit" onClick={(e) => handleSubmit(e)}></button>
-                        {/* <button className={H.btnSubmit}  type="submit" onClick={(e) => handleSubmit(e)}>GO!</button> */}
-
                     </div>
                 </div>
                 <div className={H.filters}>
