@@ -3,18 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getGame } from '../../redux/actions';
 import D from './Details.module.css';
-// import gif from "../gif1.gif";
+import gif from "../../components/gif.gif";
 
 export default function DetailPage() {
 
     const dispatch = useDispatch();
     const game = useSelector(state => state.game)
-
-    const id = useParams();
+    console.log(game)
+    const { id } = useParams();  //UN ID
 
     useEffect(() => {
-        dispatch(getGame(id.id))
+        dispatch(getGame(id))
     }, [dispatch])
+
+    // function handleCleanParams(e) {
+    //     e.preventDefault();
+    //     console.log('entro')
+    //     onClick={(e) => { handleCleanParams(e) }}
+
+    // }
 
     function starsByRating(rating) {
         let starsArr = []
@@ -32,7 +39,10 @@ export default function DetailPage() {
             {game ?
                 <>
                     <div className={D.containerLeft}>
-                        <Link to='/home'><button className={D.btnBack}>Back</button></Link>
+                        <Link to='/home'>
+                            <button className={D.btnBack} >
+                                <div className={D.toLeft}></div>Back</button>
+                        </Link>
                         <h1>{game.name}</h1>
                         <img src={game.image} className={D.imgGameId} alt="Wait... " />
                         <h6>{game.description}</h6>
@@ -47,14 +57,16 @@ export default function DetailPage() {
                             {game.genres ? game.created_db ?
                                 game.genres.map(g => <p className={D.info}>{g.name}</p>) :
                                 game.genres.map(g => <p className={D.info}>{g}</p>) :
-                                <a>LOADING</a>}
+                                <a></a>
+                                // <img className={D.gif} src={gif} height="500px" align="center" />
+                            }
                             <p className={D.titleInfo}>Platforms</p>
                             {game.platforms?.map(g => <a className={D.item}><a className={D.platforms}>{g}</a></a>)}
                         </div>
 
                     </div>
                 </> :
-                <a>LOADINGGGG</a>
+                <img className={D.gif} src={gif} height="500px" align="center" />
             }
         </div>
     )

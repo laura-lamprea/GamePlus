@@ -15,7 +15,7 @@ const rootReducer = (state = initialState, action) => {
                 gamescopy: action.payload
             }
         case 'GET_GAME':
-            console.log('get id game', action.payload)
+            //console.log('get id game', action.payload)
             return {
                 ...state,
                 game: action.payload

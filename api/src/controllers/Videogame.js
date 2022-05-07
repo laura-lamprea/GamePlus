@@ -121,6 +121,7 @@ const getById = async (req, res) => {
       const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${KEY}`);
       //console.log(game)
       const info = {
+        id: game.data.id,
         name: game.data.name,
         image: game.data.background_image_additional,
         genres: game.data.genres.map(g => g.name),

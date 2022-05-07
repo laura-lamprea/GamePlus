@@ -6,7 +6,7 @@ import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderA
 import Card from '../Card/Card'
 import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
-// import gif from "../gif1.gif";
+import gif from "../../components/gif.gif";
 import line from './line.png'
 
 export default function HomePage() {
@@ -75,7 +75,7 @@ export default function HomePage() {
                     <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Videoames</button>
                     <div>
                         {/* <input className={H.inputSearch} type="text" autocomplete="off"  placeholder=" Search game..." onChange={(e) => handleInputChange(e)} /> */}
-                        <input required name="buscar" type="search" autocomplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
+                        <input className={H.inputSearch} required name="buscar" type="search" autoComplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
                         <button className={H.btn} type="reset">x</button>
                         <button className={H.btn} type="submit" onClick={(e) => handleSubmit(e)}></button>
                         {/* <button className={H.btnSubmit}  type="submit" onClick={(e) => handleSubmit(e)}>GO!</button> */}
@@ -117,7 +117,7 @@ export default function HomePage() {
             <div className={H.toplayer}></div>
 
             <div className={H.pagination}>
-                
+
                 <h3>VideoGames</h3>
                 <img src={line} className={H.line} align="center" />
                 <div className={H.btngroup}>
@@ -147,24 +147,10 @@ export default function HomePage() {
                             </Link>
                         );
                     })
-                        : <h2>LOADING ......</h2>
-                    // <img className={H.gif} src={gif} height="250px" align="center" />
+                    : <img className={H.gif} src={gif}  />
                 }
             </nav>
         </div>
     )
 }
 
-{/* <button type="button" onClick={(e) => handlePage(e)} >6</button>
-<button type="button" onClick={(e) => handlePage(e)} >7</button> */}
-
-//   <div>
-//                 <ul className={H.ul}>
-//                     <li className={H.li}><a className={H.a}>«</a></li>
-//                     <li className={H.li}><a className={H.a} onClick={(e) => handlePage(e)}>1</a></li>
-//                     <li className={H.li}><a className={H.a} onClick={(e) => handlePage(e)}>2</a></li>
-//                     <li className={H.li}><a className={H.a} onClick={(e) => handlePage(e)}>3</a></li>
-//                     <li className={H.li}><a className={H.a} onClick={(e) => handlePage(e)}>4</a></li>
-//                     <li className={H.li}><a className={H.a}>»</a></li>
-//                 </ul>
-//             </div> 

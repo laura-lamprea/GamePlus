@@ -1,119 +1,141 @@
-.container{
-    display: flex;          
+.container {
+    background-image: url(fondo.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: #000;
+    height: 100%;
+    display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 90px 0 200px 0;
 }
 
-.erros{
-    background-color:rgb(228, 16, 16);
-    color:white;
-    text-align:center; 
-    border-radius: 10px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 22px;
-}
 
-.container1{
-    display: flex;     
-    flex-direction: column;     
+.containerLeft {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-left: 6%;
-
+    background: rgba(23, 22, 27, 0.5);
+    padding: 30px 30px 50px 30px;
+    border-radius: 20px;
+    width: 400px;
+    height: 300px;
 }
-.welcome{
-    font-size:40px;
+
+.welcome {
+    font-size: 30px;
     font-family: Georgia, serif;
     color: rgb(203, 182, 182);
 }
 
-.form{
-/* color: fff;
-    display: block;
-    margin-top:10%;
-    padding:50px;
-    margin-right: 35%;
-    margin-left: 35%;
-     */
-    border-radius: 30px;
-    border: 3px solid rgb(203, 182, 182);
-    color: rgb(162, 158, 158);
-    padding: 2rem 1rem;
-    margin:4% 1% 0% 0%; 
-    width:500px;
- 
-    /* padding: 2rem 1rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    margin:5% 20% 10% 20%; */
+.imgNew {
+    height: 200px;
+    margin: 10px 0 10px 0;
 }
 
-.slider{
-    background-color: red;
+.containerRight {
+    display: flex;
+    flex-direction: column;
+    background: rgba(23, 22, 27, 0.5);
+    border-radius: 30px;
+    border: 1px solid rgb(203, 182, 182);
+    color: rgb(189, 184, 184);
+    /* padding: 2rem 1rem; */
+    padding: 20px ;
+    margin:-30px 50px 0 0; 
+    width: 500px;
 }
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+/* 
+    text-align: left;
+    align-items: right; */
+}
+
+input{
+background-color: transparent ;
+color: rgb(203, 182, 182);
+}
+
+textarea{
+    background-color: transparent;
+    color: rgb(203, 182, 182);
+}
+
+
+.slider {
+    color: red;
+}
+
 label {
-    padding: 4px 20px 5px 0;
+    padding: 4px 0px 5px 0;
     display: inline-bbloclock;
 }
 
-
-.container2{
-    display: flex;          
-    flex-direction: column;
+.danger{
+    color: rgb(249, 220, 220);
+    background-color: rgb(242, 8, 8,  0.5);
+    font-size: 13px;
+    margin: 4px 0 0 0px;
+    text-align: center;
 }
 
-.container3{
+
+/* .container3 {
     margin-top: 3%;
     margin-bottom: 4%;
-    display: flex; 
+    display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.container4{
-    display: flex; 
+.container4 {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
+ */
 
-.input{
-    background-color:transparent;
+
+.btnx {
+    background-color: transparent;
+    border: none;
     color: rgb(203, 182, 182);
+    margin: 0 10px 0 -5px;
 }
 
-.btnx{
-    background-color:transparent;
-    border-color:none;
-    color: rgb(203, 182, 182); ;
-}
-.btnsub{
+.btnsub {
     text-align: center;
-    margin-top:4%
+    margin-top: 4%
 }
 
 .btnBack {
+    display: flex;
     background-color: transparent;
-
-     color: rgb(208, 195, 195);
-     font-family: Georgia, serif;
-     font-size: 21px;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    color: rgb(208, 195, 195);
+    font-family: Georgia, serif;
+    font-size: 21px;
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    margin: 20px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:20px;
-    padding-right:20px;
+    margin: 5px 0 -20px 0;
+    padding: 10px 30px 10px 20px;
+}
 
-  }
-  .btnBack:hover {
-    background-color: #4caf50; /* verde */
-    color: white;
-  }
+.btnBack:hover {
+    background-color: #ddd;
+    color: #060609;
+}
 
-
-
-
+.toLeft {
+    width: 0;
+    height: 0;
+    border-right: 9px solid rgb(208, 195, 195);
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    margin-right: 8px;
+    margin-top: 3px;
+    align-items: center;
+}
