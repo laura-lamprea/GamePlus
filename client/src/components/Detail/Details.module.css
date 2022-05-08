@@ -37,7 +37,7 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
 
 .letterInfo {
@@ -64,6 +64,7 @@ h6 {
   color: #6c6565;
   margin-top: -22px;
 }
+
 .info:hover {
   color: #fff9f9;
 }
@@ -88,11 +89,12 @@ h6 {
 
 .item {
   background-color: rgb(12, 67, 67);
-  padding: 0px 3px 3px 4px ;
+  padding: 0px 3px 3px 4px;
   margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 8px;
 }
+
 .item:hover {
   color: rgb(218, 198, 188);
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
@@ -102,13 +104,13 @@ h6 {
 }
 
 .platforms {
-  padding: 1px 25px 1px 25px ;
+  padding: 1px 25px 1px 25px;
   border: 1px solid rgb(218, 198, 188);
   font-size: 16px;
   letter-spacing: -0.5px;
 }
 
-.toLeft{
+.toLeft {
   width: 0;
   height: 0;
   border-right: 9px solid rgb(208, 195, 195);
@@ -128,17 +130,16 @@ h6 {
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   margin: 5px 0 -20px 0;
-  padding: 10px  30px 10px 20px ;
+  padding: 10px 30px 10px 20px;
 }
 
 .btnBack:hover {
-    background-color: #ddd;
-    color: #060609;
+  background-color: #ddd;
+  color: #060609;
 }
 
 .gif {
-  width: 250px;
+  height: 300px;
   align-items: center;
-  margin-top: -20px;
-  margin-left: 480px;
+  margin: 150px 0 300px 500px;
 }

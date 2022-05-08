@@ -73,6 +73,14 @@ export function orderRating(payload) {
     }
 }
 
+export function cleanDetails(payload) {
+    return {
+        type: 'CLEAN_DETAILS',
+        payload
+    }
+}
+
+
 
 
 

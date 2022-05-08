@@ -3,7 +3,7 @@ const initialState = {
     game: {},
     genres: [],
     gamescopy: [],
-    platforms: []
+    platforms: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -72,7 +72,6 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 games: action.payload === 'all' ? state.gamescopy : gameFilteredCreated
             }
-
         case 'FILTER_BY_GENRE':
             const allGenres = state.gamescopy
             let filteredByGenreAll = []
@@ -83,7 +82,7 @@ const rootReducer = (state = initialState, action) => {
                 let filteredGenreApi = allGenres.filter((e) => e.genres?.includes(action.payload))
                 // let filteredGenreDb = allGenres.filter((e) => e.created_db).map((e) => e.name)
                 // console.log(filteredGenreDb)
-                filteredByGenreAll= [ ...filteredGenreApi]
+                filteredByGenreAll = [...filteredGenreApi]
             }
             // const filteredByGenreApi = action.payload === "all" ? allGenres : allGenres.filter((e) => e.genres?.includes(action.payload))
             // const filterDB = action.payload === "all" ? allGenres : allGenres.filter((e)=>e.created_db)
@@ -95,6 +94,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 games: filteredByGenreAll,
+            }
+        case 'CLEAN_DETAILS':
+            return {
+                ...state,
+                game: {}
             }
         default:
             return { ...state }

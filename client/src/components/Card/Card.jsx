@@ -4,7 +4,7 @@ import C from './Card.module.css';
 
 
 //export default function Card(props) {   // y llamo props.name PERO ES MAS PRACTICO EL DESTRUCURINGDE ECMA6
-export default function Card({ name, img, rating, genres, released }) {
+export default function Card({ id ,name, img, rating, genres, released }) {
     function starsByRating(rating) {
         let starsArr = []
         for (let i = 0; i < 5; i++) {

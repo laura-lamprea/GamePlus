@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getGame } from '../../redux/actions';
+import { getGame, cleanDetails } from '../../redux/actions';
 import D from './Details.module.css';
 import gif from "../../components/gif.gif";
 
@@ -9,18 +9,25 @@ export default function DetailPage() {
 
     const dispatch = useDispatch();
     const game = useSelector(state => state.game)
-    console.log(game)
-    const { id } = useParams();  //UN ID
+   
+    const { id } = useParams(); 
+
+ 
 
     useEffect(() => {
+        dispatch(cleanDetails()) 
         dispatch(getGame(id))
+       
+        // if(id !== game.id){
+        //     dispatch(getGame(id))
+        // }
+       
     }, [dispatch])
 
     // function handleCleanParams(e) {
     //     e.preventDefault();
     //     console.log('entro')
     //     onClick={(e) => { handleCleanParams(e) }}
-
     // }
 
     function starsByRating(rating) {
@@ -33,10 +40,19 @@ export default function DetailPage() {
         }
         return starsArr
     }
+    
+    console.log('estado', game.id, 'params', id )
+    if(id !== game.id){
+        console.log('id difrente al estado')
+    }
+    // else{
+    //    console.log('entro al else')
+    // }
 
     return (
         <div className={D.container} >
-            {game ?
+            { game.id? 
+             
                 <>
                     <div className={D.containerLeft}>
                         <Link to='/home'>
@@ -66,7 +82,7 @@ export default function DetailPage() {
 
                     </div>
                 </> :
-                <img className={D.gif} src={gif} height="500px" align="center" />
+                <img className={D.gif} src={gif}  />
             }
         </div>
     )

@@ -127,14 +127,16 @@ export default function HomePage() {
 
             <nav className={H.cards}>
                 {
-                    allGames.length ? allGames.map(g => {  //SI EL ESTADO EXITE
+                    allGames.length ? allGames.map(g => {  
                         return (
-                            <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} >
+                            <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={g.id}  >
                                 <Card name={g.name}
+                                id={g.id}
                                     img={g.image}
                                     genres={g.created_db ? g.genres.map(genre => ` ${genre.name} |`) : g.genres.map(genre => ` ${genre} |`)}
                                     rating={g.rating}
                                     released={g.released}
+                                    key={g.id} 
                                 />
 
                             </Link>
