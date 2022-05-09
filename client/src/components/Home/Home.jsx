@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
 // import { reset, destroy } from 'redux-form'
-import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating } from '../../redux/actions'
+import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating, cleanPage } from '../../redux/actions'
 import Card from '../Card/Card'
 import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
@@ -18,6 +18,7 @@ export default function HomePage() {
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
 
+    // const [searching, setSearching] = useState(true);
 
     useEffect(() => {
         dispatch(getAllGames(page))
@@ -26,14 +27,27 @@ export default function HomePage() {
 
     function handlePage(e) {
         e.preventDefault();
+        // console.log('el textcontext', e.target.textContent)
         setPage(e.target.textContent)
+
+        // if(e.target.textContent == page){
+        //     // setPage(e.target.textContent)
+        //     console.log('entro al if')
+        // }
+        // else{
+        //     dispatch(getAllGames(page))
+        // }
+        
         dispatch(getAllGames(page))
-        console.log('el textcontext', e.target.textContent)
+        dispatch(cleanPage())
+        console.log('el textcontext', e.target.textContent) //2
         // console.dir(e.target)
-        console.log('pagina', page)
+        console.log('FINAL pagina', page) //1
     }
+ 
     function handleSubmit(e) {
         e.preventDefault();
+        dispatch(cleanPage())
         dispatch(getGameName(name))
         setName('')
     }
@@ -43,6 +57,7 @@ export default function HomePage() {
     };
     function handleClick(e) {
         e.preventDefault();
+        dispatch(cleanPage())
         dispatch(getAllGames(page))
     }
     function orderAlfaHdl(e) {
@@ -62,7 +77,7 @@ export default function HomePage() {
         dispatch(filterCreated(e.target.value));
     }
 
-
+    // onClick={() => setCount(count + 1)}
 
     return (
         <div className={H.container}>
@@ -71,7 +86,7 @@ export default function HomePage() {
                 <div className={H.searchBar}>
                     <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Videoames</button>
                     <div>
-                        <input className={H.inputSearch} value={name} type="search" required name="buscar"  autoComplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
+                        <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
                         <button className={H.btn} type="submit" onClick={(e) => handleSubmit(e)}></button>
                     </div>
                 </div>
@@ -86,8 +101,8 @@ export default function HomePage() {
                         </select>
                         <select onChange={(e) => orderRatingHdl(e)}>
                             <option>Rating</option>
-                            <option value='asc'>to the popular</option>
-                            <option value='des'>to the unpopular</option>
+                            <option value='asc'>to the most popular</option>
+                            <option value='des'>to the least popular</option>
                         </select>
                         <select onChange={(e) => filterCreatedHdl(e)}>
                             <option >Origin</option>
@@ -106,16 +121,13 @@ export default function HomePage() {
                 </div>
 
             </div>
-
             <div className={H.toplayer}></div>
-
             <div className={H.pagination}>
-
                 <h3>VideoGames</h3>
                 <img src={line} className={H.line} align="center" />
-                <div className={H.btngroup}>
+                <div className={H.btngroup}>  
                     <button className={H.btnPg} onClick={(e) => handlePage(e)} >1</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >2</button>
+                    <button className={H.btnPg} onClick={() => setPage(2)} >2</button>
                     <button className={H.btnPg} onClick={(e) => handlePage(e)} >3</button>
                     <button className={H.btnPg} onClick={(e) => handlePage(e)} >4</button>
                     <button className={H.btnPg} onClick={(e) => handlePage(e)} >5</button>
@@ -127,22 +139,21 @@ export default function HomePage() {
 
             <nav className={H.cards}>
                 {
-                    allGames.length ? allGames.map(g => {  
+                    allGames.length ? allGames.map(g => {
                         return (
                             <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={g.id}  >
                                 <Card name={g.name}
-                                id={g.id}
+                                    id={g.id}
                                     img={g.image}
                                     genres={g.created_db ? g.genres.map(genre => ` ${genre.name} |`) : g.genres.map(genre => ` ${genre} |`)}
                                     rating={g.rating}
                                     released={g.released}
-                                    key={g.id} 
+                                    key={g.id}
                                 />
-
                             </Link>
                         );
                     })
-                    : <img className={H.gif} src={gif}  />
+                    : <img className={H.gif} src={gif} />
                 }
             </nav>
         </div>

@@ -88,19 +88,17 @@ export default function CreateGame() {
             [e.target.name]: e.target.value
         }));
 
-        // if (input.name &&
-        //     Object.entries(errors).length == 0 &&
-        //     input.genres &&
-        //     input.platforms.length &&
-        //     input.description &&
-        //     input.released &&
-        //     input.image &&
-        //     input.rating
-        // ) {
-        //     setBotonActivo(true)
-        // } else {
-        //     setBotonActivo(false)
-        // }
+        if (input.genres &&
+            input.platforms.length &&
+            input.description &&
+            input.released &&
+            input.image &&
+            input.rating
+        ) {
+            setBotonActivo(true)
+        } else {
+            setBotonActivo(false)
+        }
 
         // // console.log('tamaño del objeto error', Object.entries(errors).length) //==0
         // // console.log('el name si hay', input.name)
@@ -122,18 +120,25 @@ export default function CreateGame() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createGame(input))
-        alert("Game Created Successfully")
-        setInput({
-            ...input,
-            name: '',
-            image: '',
-            description: '',
-            released: '',
-            rating: '',
-            platforms: [],
-            genres: [],
-        });
+        if (Object.entries(errors).length == 0) {
+            dispatch(createGame(input))
+            alert("GAME CREATED SUCCESSFULLY!!")
+            setInput({
+                ...input,
+                name: '',
+                image: '',
+                description: '',
+                released: '',
+                rating: '',
+                platforms: [],
+                genres: [],
+            });
+        } else {
+            alert('FAILED CREATION!! \n Invalid data, please enter the required data!')
+            // setBotonActivo(false)
+        }
+        // dispatch(createGame(input))
+
         //notie.alert({ type: 1, text: 'Successful creation!', time: 3 })
         //history.push('/games') //para ir al home
     }
@@ -161,34 +166,32 @@ export default function CreateGame() {
                 </Link>
             </div>
             <div className={C.containerRight}>
-                {/* <div className={C.erros}>{errors.name && errors.name} {errors.image && errors.image}</div> */}
                 <form onSubmit={handleSubmit}  >
-
                     <div className={C.formItem}>
                         <label>Name</label>
                         <input type="text" value={input.name} name="name" placeholder="The name of the videogame is..." onChange={handleInputChange}
                             className={errors.name && 'danger'} />
-                        {errors.name && (<h6 className={C.danger}> {errors.name}</h6>)}
+                        {botonActivo && errors.name && (<h6 className={C.danger}> {errors.name}</h6>)}
                     </div>
 
                     <div className={C.formItem}>
                         <label>Description</label>
                         <textarea cols="30" rows="7" type="text" value={input.description} name="description" placeholder="The videogame is about..." onChange={handleInputChange}
                         />
-                        {errors.description && (<h6 className={C.danger}> {errors.description}</h6>)}
+                        {botonActivo && errors.description && (<h6 className={C.danger}> {errors.description}</h6>)}
                     </div>
                     <div className={C.formItem}>
                         <label>Released</label>
                         <input type="text" value={input.released} name="released" placeholder="YYYY-MM-DD" onChange={handleInputChange}
                         // 2022-09-17  2015-05-18
                         />
-                        {errors.released && (<h6 className={C.danger}> {errors.released}</h6>)}
+                        {botonActivo && errors.released && (<h6 className={C.danger}> {errors.released}</h6>)}
                     </div>
                     <div className={C.formItem}>
                         <label >Image</label>
                         <input type="text" value={input.image} name="image" placeholder="https://url-of-image-the-videogame.png" onChange={handleInputChange}
                         />
-                        {errors.image && (<h6 className={C.danger}> {errors.image}</h6>)}
+                        {botonActivo && errors.image && (<h6 className={C.danger}> {errors.image}</h6>)}
                     </div>
                     <div>
                         <label>Genres: </label>
@@ -203,7 +206,7 @@ export default function CreateGame() {
                                 {selec} <button className={C.btnx} onClick={(e) => handleDeleteGenre(e, selec)}>X</button>
                             </span>
                         )}
-                        {errors.genres && (<h6 className={C.danger}> {errors.genres}</h6>)}
+                        {botonActivo && errors.genres && (<h6 className={C.danger}> {errors.genres}</h6>)}
                     </div>
                     <div>
                         <label>Platforms: </label>
@@ -218,18 +221,18 @@ export default function CreateGame() {
                                 {selec} <button className={C.btnx} onClick={(e) => handleDeletePlatform(e, selec)}>X</button>
                             </span>
                         )}
-                        {errors.platforms && (<h6 className={C.danger}> {errors.platforms}</h6>)}
+                        {botonActivo && errors.platforms && (<h6 className={C.danger}> {errors.platforms}</h6>)}
                     </div>
-                    <div className={C.formItem}>
-                        <label>Rating {input.rating}</label>
-                        <input type="range" min={1.00} max={5.00} className={C.slider} value={input.rating.value} step="0.1" name="rating" onChange={handleInputChange} />
-                        {errors.rating && (<h6 className={C.danger}> {errors.rating}</h6>)}
+                    <div className={C.formSlice}>
+                        <label>Rating</label>
+                        <input type="range" min={1.00} max={5.00} className={C.slider} value={input.rating.value} step="0.1" name="rating" onChange={handleInputChange} />  {input.rating}
+                        {botonActivo && errors.rating && (<h6 className={C.danger}> {errors.rating}</h6>)}
                     </div>
 
                     {/* <button onClick={(e) => handleCleanForm(e)}>CREATE GAME</button>   */}
                     <div className={C.btnsub} >
                         {/* disabled={!botonActivo}  onClick={(e) => handleCleanForm(e)} */}
-                        <button type="submit" id="btn" >CREATE GAME</button>
+                        <button type="submit" disabled={!botonActivo} className={C.btnAll} id="btn" >CREATE GAME</button>
                     </div>
                 </form>
 

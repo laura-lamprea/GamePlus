@@ -22,7 +22,7 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case 'GET_GAME_NAME':
-            console.log('get name', action.payload)
+            //console.log('get name', action.payload)
             return {
                 ...state,
                 games: action.payload  //entre [] si no funciona
@@ -100,6 +100,12 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 game: {}
             }
+        case 'CLEAN_PAGE':
+            return {
+                ...state,
+                games: []
+            }
+            
         default:
             return { ...state }
 
