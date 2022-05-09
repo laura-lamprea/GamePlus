@@ -30,10 +30,9 @@ export function validate(input) {
     }
 
     if (!input.description) {
-        errors.description = 'Description is required!';                                    //600
-    } else if (input.description.split(' ').length < 20 || input.description.split(' ').length > 100) {
-        // errors.description = input.description.split(' ').length + 'Number of words allowed: 10-100!';
-        errors.description = 'Number of words allowed: 20-100!';
+        errors.description = 'Description is required!' 
+    } else if (input.description.split(' ').length < 20 || input.description.split(' ').length > 120) {
+        errors.description =( input.description.split(' ').length + 'Number of words allowed: 20-120!');
     }
 
     if (!input.released) {
@@ -177,7 +176,7 @@ export default function CreateGame() {
                     <div className={C.formItem}>
                         <label>Description</label>
                         <textarea cols="30" rows="7" type="text" value={input.description} name="description" placeholder="The videogame is about..." onChange={handleInputChange}
-                        />
+                        /> {input.description.split(' ').length-1}/120
                         {botonActivo && errors.description && (<h6 className={C.danger}> {errors.description}</h6>)}
                     </div>
                     <div className={C.formItem}>
