@@ -18,6 +18,8 @@ export default function HomePage() {
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
 
+    // const selectInputRef = useRef();
+
     // const [searching, setSearching] = useState(true);
 
     useEffect(() => {
@@ -59,6 +61,11 @@ export default function HomePage() {
         e.preventDefault();
         dispatch(cleanPage())
         dispatch(getAllGames(page))
+
+        document.getElementById("nameSelect").getElementsByTagName('option')[0].selected = 'selected'
+        document.getElementById("ratingSelect").getElementsByTagName('option')[0].selected = 'selected'
+        document.getElementById("originSelect").getElementsByTagName('option')[0].selected = 'selected'
+        document.getElementById("genre").getElementsByTagName('option')[0].selected = 'selected'
     }
     function orderAlfaHdl(e) {
         e.preventDefault();
@@ -94,23 +101,23 @@ export default function HomePage() {
                     <h3>Filters</h3>
                     <img src={line} className={H.line} align="center" />
                     <div>
-                        <select onChange={(e) => orderAlfaHdl(e)}>
+                        <select id="nameSelect" onChange={(e) => orderAlfaHdl(e)}>
                             <option >Name</option>
                             <option value='asc'>A-Z</option>
                             <option value='des'>Z-A</option>
                         </select>
-                        <select onChange={(e) => orderRatingHdl(e)}>
+                        <select id="ratingSelect" onChange={(e) => orderRatingHdl(e)}>
                             <option>Rating</option>
                             <option value='asc'>to the most popular</option>
                             <option value='des'>to the least popular</option>
                         </select>
-                        <select onChange={(e) => filterCreatedHdl(e)}>
+                        <select id="originSelect" onChange={(e) => filterCreatedHdl(e)}>
                             <option >Origin</option>
                             <option value='all'>All</option>
                             <option value='created'>Created</option>
                             <option value='api'>Existing</option>
                         </select>
-                        <select name="genre" id="genre" onChange={(e) => filterGenreHdl(e)}>
+                        <select  name="genre" id="genre" onChange={(e) => filterGenreHdl(e)}>
                             <option >Genres</option>
                             <option value='all'>All</option>
                             {genres.map(g => (

@@ -132,6 +132,8 @@ export default function CreateGame() {
                 platforms: [],
                 genres: [],
             });
+            document.getElementById("genres").getElementsByTagName('option')[0].selected = 'selected'
+            document.getElementById("platforms").getElementsByTagName('option')[0].selected = 'selected'
         } else {
             alert('FAILED CREATION!! \n Invalid data, please enter the required data!')
             // setBotonActivo(false)
