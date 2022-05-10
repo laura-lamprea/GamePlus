@@ -90,17 +90,27 @@ describe('Videogame routes', () => {
     }));
   });
 
-  //   describe('GET /videogames?page=1', () => {
-  //     it('should get 200', async (done) =>
-  //     agent.get('/videogames?page=1')//.expect(200) 
-  //     .then(function () {
-  //       expect(200); //expect(res).to.have.status(200);
-  //       done();
-  //     }).timeout(10000)
-  //    //7594.367 ms   3635.393 ms
-  //   //  await delay(10000)
-  //     ).timeout(10000)
+
+  // describe('GET /videogames?page=1', () => {
+  //   it('should get 200', (done) => {
+  //     agent.get('/videogames?page=1')
+  //       .then(() => done(new Error('oh oh')))
+  //       .catch(() => done())
+  //       .timeout(10000);
   //   });
+  // });
+
+    // describe('GET /videogames?page=1', () => {
+    //   it('should get 200',  (done) =>
+    //   agent.get('/videogames?page=1')//.expect(200) 
+    //   .then(function () {
+    //     expect(200); //expect(res).to.have.status(200);
+    //     done();
+    //   }).timeout(10000)
+    //  //7594.367 ms   3635.393 ms
+    // //  await delay(10000)
+    //   ).timeout(10000)
+    // });
   // //https://www.paradigmadigital.com/dev/testeo-api-rest-mocha-chai-http/
   // //https://stackoverflow-com.translate.goog/questions/44149096/for-async-tests-and-hooks-ensure-done-is-called-if-returning-a-promise-en?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=sc
 });
