@@ -19,21 +19,13 @@ export default function HomePage() {
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
 
-
     const [searching, setSearching] = useState(false);
-
 
     useEffect(() => {
         dispatch(getAllGames(page))
         dispatch(getGenres())
-
-    }, [dispatch])  //monstar y ejecutar cuando tenga esto [esto] o hacer un useeffect de getallgames siempre y cuando tenga otro estado por ejemplo genres si no esta, que no lo haga
-
-    // if (allGames.length > 0 && searching) {
-    //     setSearching(false);
-    // }
-    console.log('valor del searching',searching)
-
+    }, [dispatch])  
+    
     function handlePage(e) {
         e.preventDefault();
         // console.log('el textcontext', e.target.textContent)
@@ -56,15 +48,10 @@ export default function HomePage() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
-         
-        
         dispatch(cleanPage())
         dispatch(getGameName(name))
         setName('')
-
         setSearching(true) 
-
     }
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -96,8 +83,6 @@ export default function HomePage() {
     function filterCreatedHdl(e) {
         dispatch(filterCreated(e.target.value));
     }
-
-    // onClick={() => setCount(count + 1)}
 
     return (
         <div className={H.container}>
