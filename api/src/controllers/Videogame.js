@@ -4,8 +4,6 @@ const { KEY } = process.env;
 const { Videogame, Genre } = require("../db");
 
 
-
-
 const apiGames = async (req, res) => {
   try {
     let arrGames = [];
@@ -96,7 +94,8 @@ const getAllGames = async (req, res) => {
     //console.log(name.toLowerCase())
     const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); //filter porque find solo uno //== name.toLowerCase());
     if (!gameByName.length) {
-      return res.status(400).send('Not found')
+      console.log('NO HAY ESE VIDEOGAME')
+      return res.status(400).json({err : 'NOT able to store data in database'})//.status(400).send('Not found')   
     } else {
       return res.json(gameByName)
     }

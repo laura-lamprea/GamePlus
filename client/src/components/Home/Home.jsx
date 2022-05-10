@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
-// import { reset, destroy } from 'redux-form'
 import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating, cleanPage } from '../../redux/actions'
 import Card from '../Card/Card'
 import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
 import gif from "../../components/gif.gif";
 import line from './line.png'
+import notFound from './404.png'
+
 
 export default function HomePage() {
     const dispatch = useDispatch()
@@ -18,14 +19,20 @@ export default function HomePage() {
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
 
-    // const selectInputRef = useRef();
 
-    // const [searching, setSearching] = useState(true);
+    const [searching, setSearching] = useState(false);
+
 
     useEffect(() => {
         dispatch(getAllGames(page))
         dispatch(getGenres())
+
     }, [dispatch])  //monstar y ejecutar cuando tenga esto [esto] o hacer un useeffect de getallgames siempre y cuando tenga otro estado por ejemplo genres si no esta, que no lo haga
+
+    // if (allGames.length > 0 && searching) {
+    //     setSearching(false);
+    // }
+    console.log('valor del searching',searching)
 
     function handlePage(e) {
         e.preventDefault();
@@ -39,19 +46,25 @@ export default function HomePage() {
         // else{
         //     dispatch(getAllGames(page))
         // }
-        
+
         dispatch(getAllGames(page))
         dispatch(cleanPage())
         console.log('el textcontext', e.target.textContent) //2
         // console.dir(e.target)
         console.log('FINAL pagina', page) //1
     }
- 
+
     function handleSubmit(e) {
         e.preventDefault();
+
+         
+        
         dispatch(cleanPage())
         dispatch(getGameName(name))
         setName('')
+
+        setSearching(true) 
+
     }
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -117,7 +130,7 @@ export default function HomePage() {
                             <option value='created'>Created</option>
                             <option value='api'>Existing</option>
                         </select>
-                        <select  name="genre" id="genre" onChange={(e) => filterGenreHdl(e)}>
+                        <select name="genre" id="genre" onChange={(e) => filterGenreHdl(e)}>
                             <option >Genres</option>
                             <option value='all'>All</option>
                             {genres.map(g => (
@@ -132,7 +145,7 @@ export default function HomePage() {
             <div className={H.pagination}>
                 <h3>VideoGames</h3>
                 <img src={line} className={H.line} align="center" />
-                <div className={H.btngroup}>  
+                <div className={H.btngroup}>
                     <button className={H.btnPg} onClick={(e) => handlePage(e)} >1</button>
                     <button className={H.btnPg} onClick={() => setPage(2)} >2</button>
                     <button className={H.btnPg} onClick={(e) => handlePage(e)} >3</button>
@@ -145,8 +158,9 @@ export default function HomePage() {
 
 
             <nav className={H.cards}>
+
                 {
-                    allGames.length ? allGames.map(g => {
+                  allGames.length ? allGames.map(g => {
                         return (
                             <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={g.id}  >
                                 <Card name={g.name}
@@ -160,10 +174,14 @@ export default function HomePage() {
                             </Link>
                         );
                     })
-                    : <img className={H.gif} src={gif} />
+                    : !allGames.length && searching ?  <img className={H.gif} src={notFound} /> 
+                    : <img className={H.gif} src={gif} /> 
+                    
                 }
+
             </nav>
         </div>
     )
 }
+
 
