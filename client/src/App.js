@@ -4,6 +4,7 @@ import Home from './components/Home/Home'
 import DetailPage from './components/Detail/Details'
 import CreateGame from './components/Create/Create'
 import AboutPage from './components/About/About'
+import NotFound from './components/Notfound/NotFound'
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path='/about'>
             <AboutPage />
+          </Route> 
+          <Route path='*'>
+            <NotFound/>
           </Route> 
         </Switch>
     </div>
