@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react' //useState
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating, cleanPage } from '../../redux/actions'
+import { getAllGames, getGenres, getGameName, filterGenre, filterCreated, orderAlfa, orderRating} from '../../redux/actions'
 import Card from '../Card/Card'
 import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
@@ -20,8 +20,8 @@ export default function HomePage() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(15)
-    const indexLast = currentPage * perPage //1 * 15 = 15
-    const indexFirst = indexLast - perPage // 15 - 15 = 0
+    const indexLast = currentPage * perPage 
+    const indexFirst = indexLast - perPage 
     const currentVg = allGames.slice(indexFirst, indexLast)
 
     const page = (numPage) => {
@@ -33,7 +33,7 @@ export default function HomePage() {
     const [name, setName] = useState('')
 
 
-    const [searching, setSearching] = useState(false);
+    
 
     useEffect(() => {
         // dispatch(getAllGames(page))
@@ -41,6 +41,8 @@ export default function HomePage() {
         dispatch(getGenres())
     }, [dispatch])
 
+
+    const [searching, setSearching] = useState(false);
     // const [page, setPage] = useState(1)
     // function handlePage(e) {
     //     e.preventDefault();
@@ -54,10 +56,9 @@ export default function HomePage() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(cleanPage())
         dispatch(getGameName(name))
-        setName('')
         setSearching(true)
+        setName('')
     }
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -65,11 +66,10 @@ export default function HomePage() {
     };
     function handleClick(e) {
         e.preventDefault();
-        // dispatch(cleanPage())
+        //dispatch(cleanPage())
         // dispatch(getAllGames(page))
-        dispatch(getAllGames())
-        //window.location.reload()
-
+        //dispatch(getAllGames())
+        window.location.reload()
         document.getElementById("nameSelect").getElementsByTagName('option')[0].selected = 'selected'
         document.getElementById("ratingSelect").getElementsByTagName('option')[0].selected = 'selected'
         document.getElementById("originSelect").getElementsByTagName('option')[0].selected = 'selected'
@@ -148,8 +148,10 @@ export default function HomePage() {
             <nav className={H.cards} >
 
                 {
-                    currentVg.length ? currentVg.map(g => {
+                    currentVg.length ? 
+                    currentVg.map(g => {
                         return (
+                            g.Error ?  <img className={H.error} src={notFound} /> :
                             <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={parseInt(g.id)} >
                                 <Card name={g.name}
                                     id={g.id}
@@ -162,8 +164,7 @@ export default function HomePage() {
                             </Link>
                         );
                     })
-                        : !allGames.length && searching ? <img className={H.gif} src={notFound} />
-                            : <img className={H.gif} src={gif} />
+                    : <img className={H.loading} src={gif} />
 
                 }
 

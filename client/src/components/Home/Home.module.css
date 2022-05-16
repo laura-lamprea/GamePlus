@@ -64,7 +64,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  margin-top: -70px;
+  margin-top: -90px;
   padding-bottom: 30px;
 }
 
@@ -127,11 +127,17 @@ select {
 }
 
 
-.gif {
-  width: 250px;
+.error {
+  width: 300px;
+  align-items: center;
+  margin-top: -100px;
+  margin-left: 153%;
+}
+.loading {
+  width: 300px;
   align-items: center;
   margin-top: -20px;
-  margin-left: 480px;
+  margin-left: 153%;
 }
 
 .a {

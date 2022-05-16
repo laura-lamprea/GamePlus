@@ -81,12 +81,6 @@ export function cleanDetails(payload) {
     }
 }
 
-export function cleanPage(payload) {
-    return {
-        type: 'CLEAN_PAGE',
-        payload
-    }
-}
 
 
 

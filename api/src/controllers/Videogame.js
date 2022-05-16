@@ -92,7 +92,8 @@ const getAllGames = async (req, res) => {
   if (name) {
     const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); 
     if (!gameByName.length) {
-      return res.status(400).json({err : 'NOT able to store data in database'})//.status(400).send('Not found')   
+      return res.json({err : 'NOT able to store data in database'})
+      // return res.status(400).json({err : 'NOT able to store data in database'})//.status(400).send('Not found')   
     } else {
       return res.json(gameByName)
     }
