@@ -84,32 +84,29 @@ const dbGames = async () => {
 };
 
 const getAllGames = async (req, res) => {
-  const { page, name } = req.query;
-
+  // const { page, name } = req.query;
+  const { name } = req.query;
   const dataDb = await dbGames();
   const dataApi = await apiGames();
-  //console.log('TAMANO', dataApi.length) /100
   const allGames = [...dataDb, ...dataApi];
   if (name) {
-    //console.log(name.toLowerCase())
-    const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); //filter porque find solo uno //== name.toLowerCase());
+    const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); 
     if (!gameByName.length) {
-      console.log('NO HAY ESE VIDEOGAME')
       return res.status(400).json({err : 'NOT able to store data in database'})//.status(400).send('Not found')   
     } else {
       return res.json(gameByName)
     }
   }
-  if (page) {
-    if (page == 1) {
-      const pages = allGames.slice(page - 1, page * 15);
-      return res.json(pages);
-    } else {
-      const pages = allGames.slice((page - 1) * 15, page * 15);
-      return res.json(pages);
-    }
-  }
-  //return res.status(200).send(dataApi);
+  // if (page) {
+  //   if (page == 1) {
+  //     const pages = allGames.slice(page - 1, page * 15);
+  //     return res.json(pages);
+  //   } else {
+  //     const pages = allGames.slice((page - 1) * 15, page * 15);
+  //     return res.json(pages);
+  //   }
+  // }
+  return res.status(200).send(allGames);
 };
 
 const getById = async (req, res) => {
@@ -145,14 +142,10 @@ const getById = async (req, res) => {
 const createGame = async (req, res) => {
   const { name, image, description, released, rating, platforms, genres } = req.body;
   const newGame = await Videogame.create({ name, image, description, released, rating, platforms });
-
   // console.log('newGame', newGame)
   const genderDb = await Genre.findAll({ where: { name: genres } });
-
-  console.log('genderDb', genderDb)
-
+  //console.log('genderDb', genderDb)
   newGame.addGenre(genderDb);
-
   res.json({ data: newGame, msg: 'Successful create' });
 };
 
@@ -165,18 +158,3 @@ module.exports = {
   getPlatforms
 };
 
-// const deleteGame = async (req, res) => {
-//   const { id } = req.params;
-//   if (id) {
-//     const gameIdDelete = Videogame.destroy({
-//       where: {
-//         id: id,
-//       },
-//     });
-//     res.send("Successful delete");
-//   } else {
-//     return res.status(404).json({
-//       error: "No ID",
-//     });
-//   }
-// };

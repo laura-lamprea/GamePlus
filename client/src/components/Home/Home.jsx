@@ -10,48 +10,54 @@ import gif from "../../components/gif.gif";
 import line from './line.png'
 import notFound from './404.png'
 
+import Pagination from "../Pagination/Pagination"
+
 
 export default function HomePage() {
     const dispatch = useDispatch()
     const allGames = useSelector(state => state.games)
     const genres = useSelector(state => state.genres)
-    const [page, setPage] = useState(1)
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage, setPerPage] = useState(15)
+    const indexLast = currentPage * perPage //1 * 15 = 15
+    const indexFirst = indexLast - perPage // 15 - 15 = 0
+    const currentVg = allGames.slice(indexFirst, indexLast)
+
+    const page = (numPage) => {
+        setCurrentPage(numPage)
+    }
+
+
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
+
 
     const [searching, setSearching] = useState(false);
 
     useEffect(() => {
-        dispatch(getAllGames(page))
+        // dispatch(getAllGames(page))
+        dispatch(getAllGames())
         dispatch(getGenres())
-    }, [dispatch])  
-    
-    function handlePage(e) {
-        e.preventDefault();
-        // console.log('el textcontext', e.target.textContent)
-        setPage(e.target.textContent)
+    }, [dispatch])
 
-        // if(e.target.textContent == page){
-        //     // setPage(e.target.textContent)
-        //     console.log('entro al if')
-        // }
-        // else{
-        //     dispatch(getAllGames(page))
-        // }
-
-        dispatch(getAllGames(page))
-        dispatch(cleanPage())
-        console.log('el textcontext', e.target.textContent) //2
-        // console.dir(e.target)
-        console.log('FINAL pagina', page) //1
-    }
+    // const [page, setPage] = useState(1)
+    // function handlePage(e) {
+    //     e.preventDefault();
+    //     setPage(e.target.textContent)
+    //     dispatch(getAllGames(page))
+    //     //dispatch(cleanPage())
+    //     console.log('el textcontext', e.target.textContent) //2
+    //     // console.dir(e.target)
+    //     console.log('FINAL pagina', page) //1
+    // }
 
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(cleanPage())
         dispatch(getGameName(name))
         setName('')
-        setSearching(true) 
+        setSearching(true)
     }
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -59,8 +65,10 @@ export default function HomePage() {
     };
     function handleClick(e) {
         e.preventDefault();
-        dispatch(cleanPage())
-        dispatch(getAllGames(page))
+        // dispatch(cleanPage())
+        // dispatch(getAllGames(page))
+        dispatch(getAllGames())
+        //window.location.reload()
 
         document.getElementById("nameSelect").getElementsByTagName('option')[0].selected = 'selected'
         document.getElementById("ratingSelect").getElementsByTagName('option')[0].selected = 'selected'
@@ -130,24 +138,19 @@ export default function HomePage() {
             <div className={H.pagination}>
                 <h3>VideoGames</h3>
                 <img src={line} className={H.line} align="center" />
-                <div className={H.btngroup}>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >1</button>
-                    <button className={H.btnPg} onClick={() => setPage(2)} >2</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >3</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >4</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >5</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >6</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >7</button>
-                </div>
+                <Pagination
+                    perPage={perPage}
+                    allGames={allGames.length}
+                    page={page}
+                />
             </div>
 
-
-            <nav className={H.cards}>
+            <nav className={H.cards} >
 
                 {
-                  allGames.length ? allGames.map(g => {
+                    currentVg.length ? currentVg.map(g => {
                         return (
-                            <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={g.id}  >
+                            <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={parseInt(g.id)} >
                                 <Card name={g.name}
                                     id={g.id}
                                     img={g.image}
@@ -159,10 +162,12 @@ export default function HomePage() {
                             </Link>
                         );
                     })
-                    : !allGames.length && searching ?  <img className={H.gif} src={notFound} /> 
-                    : <img className={H.gif} src={gif} /> 
-                    
+                        : !allGames.length && searching ? <img className={H.gif} src={notFound} />
+                            : <img className={H.gif} src={gif} />
+
                 }
+
+               
 
             </nav>
         </div>
@@ -170,3 +175,52 @@ export default function HomePage() {
 }
 
 
+{/* 
+            <div className={H.pagination}>
+                <h3>VideoGames</h3>
+                <img src={line} className={H.line} align="center" />
+
+                <div className={H.btngroup}>
+                    {
+                        allGames.map((pag, index) => {
+                            return (
+                                <button className={H.btnPg} onClick={(e) => handlePage(e)}>{index}</button>
+                            )
+                        })
+
+                    }
+
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >1</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >2</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >3</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >4</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >5</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >6</button>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >7</button>
+
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)}>prev</button>
+                    <a>va la pagina</a>
+                    <button className={H.btnPg} onClick={(e) => handlePage(e)}>next</button>
+
+                </div>
+            </div> */}
+
+ {/* {
+                    allGames.length ? allGames.map(g => {
+                        return (
+                            <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={parseInt(g.id)} >
+                                <Card name={g.name}
+                                    id={g.id}
+                                    img={g.image}
+                                    genres={g.created_db ? g.genres.map(genre => ` ${genre.name} |`) : g.genres.map(genre => ` ${genre} |`)}
+                                    rating={g.rating}
+                                    released={g.released}
+                                    key={g.id}
+                                />
+                            </Link>
+                        );
+                    })
+                        : !allGames.length && searching ? <img className={H.gif} src={notFound} />
+                            : <img className={H.gif} src={gif} />
+
+                } */}
