@@ -1,7 +1,7 @@
 .container{
-    background: rgb(59, 58, 77,0.7);
+    background: rgba(67, 65, 75, 0.9);
     margin: 4% 20% 0 20%;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 40px 10px 40px;
     color:rgb(187, 179, 179);
     text-align: justify;
     border-radius: 50px;
@@ -10,13 +10,14 @@
 
 }
 .loguito{
-    height: 40px;
+    height: 30px;
     margin-top: -30px;
 }
 .p{
     font-size: 17px;
     font-family: "Courier New", Courier, monospace;
     text-align:justify; 
+    margin-top: 10px;
   }
 
 .container2{
@@ -24,12 +25,11 @@
     align-items: center;
     text-align:center;
     margin-right: 30%;
-    margin-left: 28%;
+    margin-left: 32%;
 }
 
 .btnBack {
     background-color: transparent;
-
      color: rgb(208, 195, 195);
      font-family: Georgia, serif;
      font-size: 21px;
@@ -43,6 +43,6 @@
 
   }
   .btnBack:hover {
-    background-color: #4caf50; /* verde */
-    color: white;
+    background-color: #ddd;
+    color: #060609;
   }

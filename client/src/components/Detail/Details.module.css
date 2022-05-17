@@ -17,11 +17,15 @@ h6 {
   font-weight: 100;
 }
 
+a{
+  text-decoration: none;
+}
 .imgGameId {
   height: 300px;
   border: 1px solid rgb(218, 198, 188);
   box-shadow: 7px 7px 14px #665d5d,
     -7px -7px 14px #dac7c7;
+    margin: 8px 0 18px 10px;
 }
 
 .containerRight {
@@ -67,6 +71,7 @@ h6 {
 
 .info:hover {
   color: #fff9f9;
+  cursor: pointer;
 }
 
 .spanInfo {
@@ -89,10 +94,14 @@ h6 {
 
 .item {
   background-color: rgb(12, 67, 67);
-  padding: 0px 3px 3px 4px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 8px;
+  padding: 1px 25px 1px 25px;
+  margin: 0 15px 8px 15px ;
+  align-items: center;
+  height: 25px;
+  border: 1px solid rgb(218, 198, 188);
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  cursor: pointer;
 }
 
 .item:hover {
@@ -103,12 +112,7 @@ h6 {
   box-shadow: 0px 0px 10px 5px #d4ff00;
 }
 
-.platforms {
-  padding: 1px 25px 1px 25px;
-  border: 1px solid rgb(218, 198, 188);
-  font-size: 16px;
-  letter-spacing: -0.5px;
-}
+
 
 .toLeft {
   width: 0;
@@ -129,14 +133,18 @@ h6 {
   font-size: 21px;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
-  margin: 5px 0 -20px 0;
-  padding: 10px 30px 10px 20px;
+  margin: 5px 0 5px 0;
+  padding: 5px 30px 5px 20px;
+  text-decoration: none;
 }
 
 .btnBack:hover {
   background-color: #ddd;
   color: #060609;
 }
+
+
+
 
 .gif {
   height: 300px;

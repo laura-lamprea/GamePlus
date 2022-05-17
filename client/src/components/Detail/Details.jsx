@@ -56,8 +56,7 @@ export default function DetailPage() {
                 <>
                     <div className={D.containerLeft}>
                         <Link to='/home'>
-                            <button className={D.btnBack} >
-                                <div className={D.toLeft}></div>Back</button>
+                            <button className={D.btnBack}><div className={D.toLeft}></div>Back</button>
                         </Link>
                         <h1>{game.name}</h1>
                         <img src={game.image} className={D.imgGameId} alt="Wait... " />
@@ -73,19 +72,18 @@ export default function DetailPage() {
                             {game.genres ? game.created_db ?
                                 game.genres.map(g => <p className={D.info}>{g.name}</p>) :
                                 game.genres.map(g => <p className={D.info}>{g}</p>) :
-                                <a></a>
+                                <a> </a>
                                 // <img className={D.gif} src={gif} height="500px" align="center" />
                             }
                             <p className={D.titleInfo}>Platforms</p>
-                            {game.platforms?.map(g => <a className={D.item}><a className={D.platforms}>{g}</a></a>)}
+                            {game.platforms?.map(g => <a className={D.item} >{g}</a>)}
                         </div>
 
                     </div>
                 </> :
-                <img className={D.gif} src={gif}  />
+                <img className={D.gif} src={gif}  alt="Not found" />
             }
         </div>
     )
 };
 
-{/* <div  className={`${D.container} ${D.image}`} > */ }

@@ -7,15 +7,23 @@ export default function Navbar() {
 
     return (
         <header className='header'>
-            <Link to='/' >
-                <img href='/home' src={logo} alt="logo" />
+            <img href='/home' src={logo} alt="logo" />
+            <Link to='/create' >
+                <button type="button" class="btn btn-success btn-sm ">
+                    <span class="glyphicon glyphicon-plus"></span> CREATE
+                </button>
             </Link>
             <div className={N.btnNav}>
-                <Link to='/create' >
-                    <a className={N.a} >Create</a>
-                </Link>
+
                 <Link to='/about'>
-                    <a className={N.a}>About</a>
+                    <button type="button" class="btn btn-outline-light">
+                        <span class="glyphicon glyphicon-user"></span> About
+                    </button>
+                </Link>
+                <Link to='/' >
+                    <button type="button" class="btn btn-outline-light">
+                        <span class="glyphicon glyphicon-log-out"></span> LogOut
+                    </button>
                 </Link>
             </div>
         </header>

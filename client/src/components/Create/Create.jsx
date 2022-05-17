@@ -3,11 +3,10 @@ import { createGame, getGenres, getPlatforms } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import C from './Create.module.css'
-//import { useForm } from 'react-hook-form'
-
-import notie from 'notie'
-import 'notie/dist/notie.css';
 import swal from 'sweetalert';
+//import { useForm } from 'react-hook-form'
+// import notie from 'notie'
+// import 'notie/dist/notie.css';
 
 export default function CreateGame() {
     const dispatch = useDispatch()
@@ -73,7 +72,7 @@ export default function CreateGame() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (Object.entries(errors).length == 0) {
+        if (Object.entries(errors).length === 0) {
             dispatch(createGame(input))
             // alert("GAME CREATED SUCCESSFULLY!!")
             // notie.alert({ type: 1, text: 'Successful creation!', time: 2 })
@@ -117,7 +116,7 @@ export default function CreateGame() {
         <div className={C.container}>
             <div className={C.containerLeft} >
                 <h5 className={C.welcome}>¡New Game!</h5>
-                <img className={C.imgNew} src={input.image} />
+                <img className={C.imgNew} src={input.image} alt="Not found"/>
                 <Link to='/home'>
                     <button className={C.btnBack}><div className={C.toLeft}></div>Back</button>
                 </Link>

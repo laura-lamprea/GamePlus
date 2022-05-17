@@ -99,13 +99,14 @@ export default function HomePage() {
                 <div className={H.searchBar}>
                     <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Load All Videoames</button>
                     <div>
+                        
                         <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder=" Search game..." onChange={(e) => handleInputChange(e)} />
                         <button className={H.btn} type="submit" onClick={(e) => handleSubmit(e)}></button>
                     </div>
                 </div>
                 <div className={H.filters}>
                     <h3>Filters</h3>
-                    <img src={line} className={H.line} align="center" />
+                    <img src={line} className={H.line} alt="Not found"/>
                     <div>
                         <select id="nameSelect" onChange={(e) => orderAlfaHdl(e)}>
                             <option >Name</option>
@@ -137,7 +138,7 @@ export default function HomePage() {
             <div className={H.toplayer}></div>
             <div className={H.pagination}>
                 <h3>VideoGames</h3>
-                <img src={line} className={H.line2} align="center" />
+                <img src={line} className={H.line2} alt="Not found" />
                 <Pagination
                     perPage={perPage}
                     allGames={allGames.length}
@@ -151,7 +152,7 @@ export default function HomePage() {
                     currentVg.length ? 
                     currentVg.map(g => {
                         return (
-                            g.Error ?  <img className={H.error} src={notFound} /> :
+                            g.Error ?  <img className={H.error} src={notFound}  alt="Not found"/> :
                             <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={parseInt(g.id)} >
                                 <Card name={g.name}
                                     id={g.id}
@@ -164,7 +165,7 @@ export default function HomePage() {
                             </Link>
                         );
                     })
-                    : <img className={H.loading} src={gif} />
+                    : <img className={H.loading} src={gif} alt="Not found"/>
 
                 }
 
@@ -176,52 +177,3 @@ export default function HomePage() {
 }
 
 
-{/* 
-            <div className={H.pagination}>
-                <h3>VideoGames</h3>
-                <img src={line} className={H.line} align="center" />
-
-                <div className={H.btngroup}>
-                    {
-                        allGames.map((pag, index) => {
-                            return (
-                                <button className={H.btnPg} onClick={(e) => handlePage(e)}>{index}</button>
-                            )
-                        })
-
-                    }
-
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >1</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >2</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >3</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >4</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >5</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >6</button>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)} >7</button>
-
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)}>prev</button>
-                    <a>va la pagina</a>
-                    <button className={H.btnPg} onClick={(e) => handlePage(e)}>next</button>
-
-                </div>
-            </div> */}
-
- {/* {
-                    allGames.length ? allGames.map(g => {
-                        return (
-                            <Link to={`/details/${g.id}`} style={{ textDecoration: 'none' }} key={parseInt(g.id)} >
-                                <Card name={g.name}
-                                    id={g.id}
-                                    img={g.image}
-                                    genres={g.created_db ? g.genres.map(genre => ` ${genre.name} |`) : g.genres.map(genre => ` ${genre} |`)}
-                                    rating={g.rating}
-                                    released={g.released}
-                                    key={g.id}
-                                />
-                            </Link>
-                        );
-                    })
-                        : !allGames.length && searching ? <img className={H.gif} src={notFound} />
-                            : <img className={H.gif} src={gif} />
-
-                } */}

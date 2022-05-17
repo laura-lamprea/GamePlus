@@ -25,14 +25,13 @@ export default function About() {
                     Finally, I leave you two links to contact me!
                 </p>
                 <div className={A.container2}>
-                    <a title="My Github" href="https://github.com/laura-lamprea"><img src={git} height='100px' alt="Not found" /></a>
-                    <a title="My LinkedIn" href="https://www.linkedin.com/in/lauralamprea/"><img src={link} height='85px' alt="Not found" /></a>
+                    <a title="My Github" href="https://github.com/laura-lamprea" target="_blank" rel="noreferrer" ><img src={git} height='80px' alt="Not found" /></a>
+                    <a title="My LinkedIn" href="https://www.linkedin.com/in/lauralamprea/" target="_blank" rel="noreferrer" ><img src={link} height='70px' alt="Not found" /></a>
                 </div>
                 <div>
-                    <Link to='/home'><button className={A.btnBack}>Back</button></Link>
+                    <Link to='/home'><button className={A.btnBack} >Back</button></Link>
                 </div>
             </center>
-
 
         </div>
     )

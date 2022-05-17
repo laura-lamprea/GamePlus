@@ -11,6 +11,7 @@ body {
   background: rgba(27, 26, 42, 0.5);
   width: 55%;
   height: 617px;
+  height: 640px;
   clip-path: polygon(0% 0%, 60% 0%, 100% 100%, 0% 100%);
   color: rgb(211, 214, 200);
   padding-top: 10px;
@@ -19,7 +20,7 @@ body {
 }
 .containerInfo {
   /* background: rgba(70, 60, 201, 0.5); */
-  padding: 17% 40% 5%  5%;
+  padding: 17% 40% 7%  5%;
   
 }
 
