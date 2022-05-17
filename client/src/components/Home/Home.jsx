@@ -137,7 +137,7 @@ export default function HomePage() {
             <div className={H.toplayer}></div>
             <div className={H.pagination}>
                 <h3>VideoGames</h3>
-                <img src={line} className={H.line} align="center" />
+                <img src={line} className={H.line2} align="center" />
                 <Pagination
                     perPage={perPage}
                     allGames={allGames.length}

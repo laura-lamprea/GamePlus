@@ -1,8 +1,11 @@
 header {
-  background: rgba(27, 26, 42, 0.7);
+  background: rgba(27, 26, 42); 
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+ width: 100%;
+ margin-top: -30px;
 }
 
 .btnNav {

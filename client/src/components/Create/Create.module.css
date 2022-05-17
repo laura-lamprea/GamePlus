@@ -42,8 +42,8 @@
     color: rgb(189, 184, 184);
     /* padding: 2rem 1rem; */
     padding: 20px ;
-    margin:-30px 50px 0 0; 
-    width: 500px;
+    margin:-50px 50px 0 0; 
+    width: 620px;
 }
 
 .formItem {
@@ -56,31 +56,38 @@
 input{
 background-color: transparent ;
 color: rgb(203, 182, 182);
+border: 1px solid rgb(203, 182, 182);
+padding-left: 8px;
+border-radius: 5px;
 }
+
 
 textarea{
     background-color: transparent;
     color: rgb(203, 182, 182);
+    border: 1px solid rgb(203, 182, 182);
+padding-left: 8px;
+border-radius: 5px;
 }
 
 .formSlice{
     display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 15px 150px 0 150px;
+    /* flex-direction: column; */
+    text-align: left;
+    align-items: center;
+    margin: 15px 0 0 0;
 }
 .slider {
     -webkit-appearance: none;
-    width: 180px;
-    height: 7px;
+    width: 150px;
+    height: 2px;
     border-radius: 5px;  
     background: #716f74;
     outline: none;
     /* opacity: 0.6; */
     -webkit-transition: .2s;
     transition: opacity .2s;
-    margin-top: 3px;
-    margin-bottom: 7px;
+    margin: 7px 10px 7px 10px ;
 }
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -106,11 +113,14 @@ label {
 }
 
 .danger{
-    color: rgb(249, 220, 220);
-    background-color: rgb(242, 8, 8,  0.5);
+    color: rgb(75, 26, 26);
+    background-color: rgba(241, 182, 182, 0.979);
     font-size: 13px;
+    font-weight: 600;
     margin: 4px 0 0 0px;
-    text-align: center;
+    text-align: left;
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
 }
 
 
