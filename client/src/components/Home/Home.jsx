@@ -28,12 +28,8 @@ export default function HomePage() {
         setCurrentPage(numPage)
     }
 
-
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
-
-
-    
 
     useEffect(() => {
         // dispatch(getAllGames(page))
@@ -160,6 +156,7 @@ export default function HomePage() {
                                     genres={g.created_db ? g.genres.map(genre => ` ${genre.name} |`) : g.genres.map(genre => ` ${genre} |`)}
                                     rating={g.rating}
                                     released={g.released}
+                                    created_db={g.created_db? true : false}
                                     key={g.id}
                                 />
                             </Link>

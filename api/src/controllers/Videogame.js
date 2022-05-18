@@ -90,9 +90,9 @@ const getAllGames = async (req, res) => {
   const dataApi = await apiGames();
   const allGames = [...dataDb, ...dataApi];
   if (name) {
-    const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); 
+    const gameByName = await allGames.filter(n => n.name.toLowerCase().includes(name.toLowerCase()));
     if (!gameByName.length) {
-      return res.json({err : 'NOT able to store data in database'})
+      return res.json({ err: 'NOT able to store data in database' })
       // return res.status(400).json({err : 'NOT able to store data in database'})//.status(400).send('Not found')   
     } else {
       return res.json(gameByName)
@@ -150,12 +150,27 @@ const createGame = async (req, res) => {
   res.json({ data: newGame, msg: 'Successful create' });
 };
 
+const deleteGame = async (req, res) => {
+  const { id } = req.params;
+  const dataDb = await dbGames();
+  const gameId = await dataDb.find(g => g.id == id);
 
+  if (gameId) {
+    Videogame.destroy({
+      where: { id: id }
+    })
+    res.send('Videogame deleted');
+  } else {
+    res.status(400).send('Error delete');
+  }
+
+}
 
 module.exports = {
   getAllGames,
   getById,
   createGame,
-  getPlatforms
+  getPlatforms,
+  deleteGame
 };
 

@@ -79,5 +79,32 @@ h5{
     /* font-size: 20px; */
 }
 
+.delete{
+    background-color: rgb(226, 22, 22, 0.5);
+    /* width: min-content;
+    height: min-content; */
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    /* para posision a la derecha, necsita el padre con relative */
+    /* right: 5px;
+    top: 5px; */
+    font-size: 13px;
+    text-align: center;
+    cursor: not-allowed ;
+    border: 0;
+    margin: 3px;
+}
+.delete:hover{
+    background-color: rgb(226, 22, 22);
+}
+
+.noDelete{
+    background-color: transparent;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 0;
+}
 
 

@@ -44,6 +44,12 @@ export function getPlatforms() {
     }
 }
 
+export function deleteGame(id) {
+    return async function (dispatch) {
+        const json = await axios.delete(`http://localhost:3001/videogames/${id}`)
+        return dispatch({ type: 'DELETE_GAME', payload: json.data })
+    }
+}
 
 // //LA ACCION ES DESPACHAR UN TIPO, DEJAR AQUI LA MENOR CANTIDAD DE LOGICA Y HACER MEJOR EN REDUCE O COMPONENTE
 export function filterGenre(payload) {

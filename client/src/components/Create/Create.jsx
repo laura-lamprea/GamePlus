@@ -116,7 +116,7 @@ export default function CreateGame() {
         <div className={C.container}>
             <div className={C.containerLeft} >
                 <h5 className={C.welcome}>¡New Game!</h5>
-                <img className={C.imgNew} src={input.image} alt="Not found"/>
+                <img className={C.imgNew} src={input.image} />
                 <Link to='/home'>
                     <button className={C.btnBack}><div className={C.toLeft}></div>Back</button>
                 </Link>

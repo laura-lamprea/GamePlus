@@ -75,11 +75,11 @@ border-radius: 5px;
     /* flex-direction: column; */
     text-align: left;
     align-items: center;
-    margin: 15px 0 0 0;
+    margin: 15px 330px 0 0;
 }
 .slider {
     -webkit-appearance: none;
-    width: 150px;
+    width: 15px;
     height: 2px;
     border-radius: 5px;  
     background: #716f74;

@@ -11,7 +11,7 @@ const rootReducer = (state = initialState, action) => {
         case 'GET_ALL_GAMES':
             return {
                 ...state,
-                games: action.payload,  
+                games: action.payload,
                 gamescopy: action.payload
             }
         case 'GET_GAME':
@@ -25,12 +25,12 @@ const rootReducer = (state = initialState, action) => {
             // .length? filteredByGenreAll : [{Error: 'No videogames found'}]
             return {
                 ...state,
-                games: action.payload.err? [{Error: 'No videogames found'}] : action.payload
+                games: action.payload.err ? [{ Error: 'No videogames found' }] : action.payload
             }
 
-        case 'CREATE_GAME': 
+        case 'CREATE_GAME':
             return {
-                ...state, 
+                ...state,
             }
 
         case 'GET_GENRES':
@@ -43,6 +43,13 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 platforms: action.payload
+            }
+
+        case 'DELETE_GAME':
+            console.log(action.payload)
+            return {
+                ...state,
+                game: action.payload
             }
 
         case 'ORDER_ALFA':
@@ -66,12 +73,12 @@ const rootReducer = (state = initialState, action) => {
 
         case 'FILTER_CREATED':
             const allGames = state.gamescopy
-            const gameFilteredCreated = action.payload === "created" ? allGames.filter(e => e.created_db) : 
+            const gameFilteredCreated = action.payload === "created" ? allGames.filter(e => e.created_db) :
                 allGames.filter(e => !e.created_db)
             return {
                 ...state,
-                games: action.payload === 'all' ? state.gamescopy 
-                : gameFilteredCreated.length? gameFilteredCreated : [{Error: 'No videogames found'}]
+                games: action.payload === 'all' ? state.gamescopy
+                    : gameFilteredCreated.length ? gameFilteredCreated : [{ Error: 'No videogames found' }]
             }
         case 'FILTER_BY_GENRE':
             const allGenres = state.gamescopy
@@ -84,14 +91,14 @@ const rootReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                games: filteredByGenreAll.length? filteredByGenreAll : [{Error: 'No videogames found'}]
+                games: filteredByGenreAll.length ? filteredByGenreAll : [{ Error: 'No videogames found' }]
             }
         case 'CLEAN_DETAILS':
             return {
                 ...state,
                 game: {}
             }
-    
+
         default:
             return { ...state }
 
