@@ -69,7 +69,6 @@ const getPlatforms = async (req, res) => {
 
 };
 
-
 const dbGames = async () => {
   const gamesDb = await Videogame.findAll({
     include: {
