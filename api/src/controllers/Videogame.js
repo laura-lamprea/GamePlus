@@ -1,6 +1,6 @@
 const axios = require("axios");
 require('dotenv').config();
-const { KEY } = process.env;
+// const { KEY } = process.env;
 const { Videogame, Genre } = require("../db");
 
 
@@ -8,7 +8,7 @@ const apiGames = async (req, res) => {
   try {
     let arrGames = [];
     for (let i = 1; i < 6; i++) {
-      const gamesByPage = await axios(`https://api.rawg.io/api/games?key=${KEY}&page=${i}`);
+      const gamesByPage = await axios(`https://api.rawg.io/api/games?key=48bbce3e7c2e4a6e928e863c2080eb28&page=${i}`);
       const { results } = gamesByPage.data;
       arrGames = arrGames.concat(results);
     }
@@ -114,7 +114,7 @@ const getById = async (req, res) => {
   //console.log(id.length) //36
   try {
     if (id.length != 36) {
-      const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${KEY}`);
+      const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=48bbce3e7c2e4a6e928e863c2080eb28`);
       //console.log(game)
       const info = {
         id: game.data.id,
