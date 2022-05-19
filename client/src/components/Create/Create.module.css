@@ -5,7 +5,7 @@
     background-color: #000;
     height: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-around;
     padding: 90px 0 200px 0;
 }
@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     background: rgba(23, 22, 27, 0.5);
-    padding: 30px 30px 50px 30px;
+    padding: 10px 30px 50px 30px;
     border-radius: 20px;
     width: 400px;
     height: 300px;
@@ -41,8 +41,8 @@
     border: 1px solid rgb(203, 182, 182);
     color: rgb(189, 184, 184);
     /* padding: 2rem 1rem; */
-    padding: 20px ;
-    margin:-50px 50px 0 0; 
+    padding: 20px;
+    margin: -50px 50px 0 0;
     width: 620px;
 }
 
@@ -51,68 +51,67 @@
     flex-direction: column;
 }
 
-
-
-input{
-background-color: transparent ;
-color: rgb(203, 182, 182);
-border: 1px solid rgb(203, 182, 182);
-padding-left: 8px;
-border-radius: 5px;
-}
-
-
-textarea{
+input {
     background-color: transparent;
     color: rgb(203, 182, 182);
     border: 1px solid rgb(203, 182, 182);
-padding-left: 8px;
-border-radius: 5px;
+    padding-left: 8px;
+    border-radius: 5px;
 }
 
-.formSlice{
+textarea {
+    background-color: transparent;
+    color: rgb(203, 182, 182);
+    border: 1px solid rgb(203, 182, 182);
+    padding-left: 8px;
+    border-radius: 5px;
+}
+
+.formSlice {
     display: flex;
     /* flex-direction: column; */
     text-align: left;
     align-items: center;
     margin: 15px 330px 0 0;
 }
+
 .slider {
     -webkit-appearance: none;
     width: 15px;
     height: 2px;
-    border-radius: 5px;  
+    border-radius: 5px;
     background: #716f74;
     outline: none;
     /* opacity: 0.6; */
     -webkit-transition: .2s;
     transition: opacity .2s;
-    margin: 7px 10px 7px 10px ;
+    margin: 7px 10px 7px 10px;
 }
+
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 17px;
-    height:17px;
-    border-radius: 50%; 
+    height: 17px;
+    border-radius: 50%;
     background: rgb(240, 152, 11);
     cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
+}
+
+.slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     cursor: pointer;
     background: rgb(50, 46, 174);
-  }
+}
 
 label {
     padding: 4px 0px 5px 0;
     display: inline-bbloclock;
 }
 
-.danger{
+.danger {
     color: rgb(75, 26, 26);
     background-color: rgba(241, 182, 182, 0.979);
     font-size: 13px;
@@ -154,20 +153,22 @@ label {
 }
 
 .btnBack {
-    display: flex;
-    background-color: transparent;
+    background-color: rgba(11, 7, 87, 0.519);
     color: rgb(208, 195, 195);
     font-family: Georgia, serif;
     font-size: 21px;
     -webkit-transition-duration: 0.4s;
+    /* Safari */
     transition-duration: 0.4s;
-    margin: 5px 0 -20px 0;
-    padding: 10px 30px 10px 20px;
+    margin: -10px 10px 20px 10px;
+    padding: 5px 20px 5px 15px;
+    border: 1px solid rgb(147, 139, 139);
+    border-radius: 3px;
 }
 
 .btnBack:hover {
-    background-color: #ddd;
-    color: #060609;
+    background-color: rgb(101, 180, 232);
+    color: white;
 }
 
 .toLeft {
@@ -198,22 +199,23 @@ label {
     text-decoration: none;
     text-shadow: 0px 1px 0px #810e05;
     margin-left: 2%;
-  }
-  
-  .btnAll:hover {
+}
+
+.btnAll:hover {
     background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
     background-color: #c62d1f;
-  }
-  
-  .btnAll:active {
+}
+
+.btnAll:active {
     position: relative;
     top: 1px;
-  }
-  input[type="submit"][disabled]:active,
+}
 
-  .btnAll:disabled {
-        background: #ccc;
-        color: rgb(155, 145, 145);
-        background-color: rgb(96, 92, 92);
-        cursor:not-allowed;
-  }
+input[type="submit"][disabled]:active,
+
+.btnAll:disabled {
+    background: #ccc;
+    color: rgb(155, 145, 145);
+    background-color: rgb(96, 92, 92);
+    cursor: not-allowed;
+}

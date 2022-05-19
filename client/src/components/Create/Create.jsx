@@ -114,12 +114,14 @@ export default function CreateGame() {
     }
     return (
         <div className={C.container}>
-            <div className={C.containerLeft} >
-                <h5 className={C.welcome}>¡New Game!</h5>
-                <img className={C.imgNew} src={input.image} />
+            <div>
                 <Link to='/home'>
-                    <button className={C.btnBack}><div className={C.toLeft}></div>Back</button>
+                    <button className={C.btnBack}>&laquo; Back</button>
                 </Link>
+                <div className={C.containerLeft} >
+                    <h5 className={C.welcome}>¡New Game!</h5>
+                    <img className={C.imgNew} src={input.image} />
+                </div>
             </div>
             <div className={C.containerRight}>
                 <form onSubmit={handleSubmit}  >

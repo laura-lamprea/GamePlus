@@ -87,7 +87,6 @@ h3 {
   /* 'http://themescare.com/demos/faf/assets/img/pattern-1.png' */
 }
 
-
 .line {
   width: 400px;
   margin-top: -2px;
@@ -117,8 +116,6 @@ select {
   /* background-color: red; */
 }
 
-
-
 .cards {
   background-color: #060609;
   display: grid;
@@ -127,13 +124,13 @@ select {
   padding: 20px 3% 223px 5%;
 }
 
-
 .error {
   width: 300px;
   align-items: center;
   margin-top: -100px;
   margin-left: 153%;
 }
+
 .loading {
   width: 300px;
   align-items: center;

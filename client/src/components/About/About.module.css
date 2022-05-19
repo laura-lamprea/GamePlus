@@ -1,12 +1,15 @@
+.fondo{
+  background-color: red;
+}
 .container{
-    background: rgba(67, 65, 75, 0.9);
+    background: rgb(40, 39, 44);
     margin: 4% 20% 0 20%;
     padding: 10px 40px 10px 40px;
     color:rgb(187, 179, 179);
     text-align: justify;
     border-radius: 50px;
-    box-shadow:  7px 7px 8px #615757,
-             -7px -7px 8px #bbb8b8;
+    box-shadow:  2px 2px 8px #615757,
+             -2px -2px 8px #bbb8b8;
 
 }
 .loguito{
@@ -24,24 +27,23 @@
     display: flex;   
     align-items: center;
     text-align:center;
-    margin-right: 30%;
-    margin-left: 32%;
+    margin-bottom: 2%;
+    margin-left: 37%;
 }
 
 .btnBack {
-    background-color: transparent;
-     color: rgb(208, 195, 195);
-     font-family: Georgia, serif;
-     font-size: 21px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    margin: 20px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:20px;
-    padding-right:20px;
+  background-color: transparent;
+   color: rgb(208, 195, 195);
+   font-family: Georgia, serif;
+   font-size: 21px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  margin: 10px 10px 10px 10px;
+  padding: 5px 20px 5px 15px;
+  border: 1px solid rgb(208, 195, 195);
+  border-radius: 3px;
+}
 
-  }
   .btnBack:hover {
     background-color: #ddd;
     color: #060609;

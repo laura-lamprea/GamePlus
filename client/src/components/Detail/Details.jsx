@@ -56,7 +56,7 @@ export default function DetailPage() {
                 <>
                     <div className={D.containerLeft}>
                         <Link to='/home'>
-                            <button className={D.btnBack}><div className={D.toLeft}></div>Back</button>
+                            <button className={D.btnBack}>&laquo; Back</button>
                         </Link>
                         <h1>{game.name}</h1>
                         <img src={game.image} className={D.imgGameId} alt="Wait... " />
