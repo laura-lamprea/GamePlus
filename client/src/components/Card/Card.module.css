@@ -8,6 +8,9 @@
   
     background-color: #0d0e1b;
 }
+.card:hover{
+    transform:  scale(1.1);
+}
 
 .cardHead{
 width: 100%;
