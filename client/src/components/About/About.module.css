@@ -1,17 +1,25 @@
 .fondo{
-  background-color: red;
+  background-image: url(fondo.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: #000;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+  padding: 90px 0 69px 0;
 }
-.container{
-    background: rgb(40, 39, 44);
-    margin: 4% 20% 0 20%;
-    padding: 10px 40px 10px 40px;
-    color:rgb(187, 179, 179);
-    text-align: justify;
-    border-radius: 50px;
-    box-shadow:  2px 2px 8px #615757,
-             -2px -2px 8px #bbb8b8;
 
+.container{
+  background: rgb(40, 39, 44, 0.7);
+  margin: -30px 20% 0 20%;
+  padding: 10px 40px 10px 40px;
+  color:rgb(187, 179, 179);
+  text-align: justify;
+  border-radius: 50px;
+  box-shadow:  2px 2px 8px #615757,
+           -2px -2px 8px #bbb8b8;
 }
+
 .loguito{
     height: 30px;
     margin-top: -30px;
