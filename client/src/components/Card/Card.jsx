@@ -34,7 +34,7 @@ export default function Card({ id, name, img, rating, genres, released, created_
 
             <div className={C.cardHead}>
                 {
-                    created_db ? <button className={C.delete} onClick={(e) => deleteHDL(e)}>x</button> : <button className={C.noDelete}></button>
+                    created_db ? <button title="delete" className={C.delete} onClick={(e) => deleteHDL(e)}>x</button> : <button className={C.noDelete}></button>
                 }
 
                 <img className={C.imgGame} src={img} alt="Image Not Found" />
