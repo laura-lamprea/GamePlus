@@ -14,7 +14,6 @@ export default function Navbar() {
                 </button>
             </Link>
             <div className={N.btnNav}>
-
                 <Link to='/about'>
                     <button type="button" class="btn btn-outline-light">
                         <span class="glyphicon glyphicon-user"></span> About
