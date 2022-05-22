@@ -24,7 +24,7 @@ export default function Card({ id, name, img, rating, genres, released, created_
         console.log(e)
         e.preventDefault();
         dispatch(deleteGame(id))
-        window.location.reload()
+        // window.location.reload()
     }
 
     
