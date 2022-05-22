@@ -80,11 +80,11 @@ h5{
 }
 
 .delete{
-    background-color: rgb(226, 22, 22, 0.5);
+    background-color: transparent;
     /* width: min-content;
     height: min-content; */
     width: 20px;
-    height: 20px;
+    /* height: 20px; */
     position: absolute;
     /* para posision a la derecha, necsita el padre con relative */
     /* right: 5px;
@@ -92,11 +92,17 @@ h5{
     font-size: 13px;
     text-align: center;
     cursor: not-allowed ;
-    border: 0;
+    border: 1px solid rgb(34, 32, 32);
     margin: 3px;
+    border-radius: 20px;
+    padding: 0 0 2px 0;
+    color: rgb(34, 32, 32);
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 .delete:hover{
-    background-color: rgb(226, 22, 22);
+    background-color: rgb(156, 41, 41);
+    color: white;
 }
 
 .noDelete{
