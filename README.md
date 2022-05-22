@@ -8,10 +8,12 @@
   <img height="90" src='./GamePlus.png' </img>
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <img height="400" src='./landing.png' </img>
-</p>
-
+</p> -->
+<center>
+<video src="demo.mp4" height="480"></video>
+</center>
 <center>
   <p align="center">
     <a  title="Deploy" href="https://game-app-rosy.vercel.app" target="_blank" rel="noreferrer" >
