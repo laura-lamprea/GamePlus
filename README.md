@@ -12,6 +12,13 @@
   <img height="400" src='./landing.png' </img>
 </p>
 
+<center>
+  <p align="center">
+    <a  title="Deploy" href="https://game-app-rosy.vercel.app" target="_blank" rel="noreferrer" >
+      <h1>Check it out!</h1>
+    </a>
+  </p>
+</center>
 
 
 
