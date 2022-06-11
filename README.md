@@ -83,3 +83,16 @@ A server was developed in Node/Express with the following routes:
 #### Testing
 - [ ] Unit tests for backend routes with their respective tests with "Chai"
 - [ ] Unit tests for database model with its tests with "Chai"
+
+#### Images
+<p align="center">
+  <img height="300" src='./Home.png' </img>
+</p>
+<p align="center">
+  <img height="320" src='./Create.jpg' </img>
+</p>
+<p align="center">
+  <img height="320" src='./Details.png' </img>
+</p>
+
+
